@@ -1,0 +1,27 @@
+{
+  "name": "creact",
+  "namespace": false,
+  "warnings": {
+    "error": "+8-3"
+  },
+  "bsc-flags": ["-w -3", "-bs-super-errors"],
+  "sources": ["src", "src/revy"],
+  "suffix": ".bs.js",
+  "reason": {
+    "react-jsx": 3
+  },
+  "package-specs": [
+    {
+      "module": "es6",
+      "in-source": true
+    }
+  ],
+  "bs-dependencies": [
+    "credt",
+    "reason-react",
+    "tablecloth-bucklescript",
+    "reason-react-native",
+    "reason-promise"
+  ],
+  "refmt": 3
+}

@@ -1,0 +1,21 @@
+####{BSB GENERATED: NO EDIT
+FLG -ppx '/Users/eldh/Code/jour/node_modules/bs-platform/darwin/bsc.exe -as-ppx -bs-jsx 3'
+S /Users/eldh/Code/jour/node_modules/bs-platform/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/bs-platform/lib/ocaml
+FLG -w -3
+FLG -w +a-4-9-20-40-41-42-50-61-102
+S /Users/eldh/Code/jour/node_modules/credt/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/credt/lib/ocaml
+S /Users/eldh/Code/jour/node_modules/reason-react/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/reason-react/lib/ocaml
+S /Users/eldh/Code/jour/node_modules/tablecloth-bucklescript/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/tablecloth-bucklescript/lib/ocaml
+S /Users/eldh/Code/jour/node_modules/reason-react-native/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/reason-react-native/lib/ocaml
+S /Users/eldh/Code/jour/node_modules/reason-promise/lib/ocaml
+B /Users/eldh/Code/jour/node_modules/reason-promise/lib/ocaml
+S src/revy
+B lib/bs/src/revy
+S src
+B lib/bs/src
+####BSB GENERATED: NO EDIT}
