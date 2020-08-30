@@ -1,3 +1,7 @@
+type locale;
+type localeConfig = {locale};
+[@bs.module "date-fns/locale"] external seLocale: locale = "sv";
+
 [@bs.module "date-fns"]
 external addMinutes: (Js.Date.t, int) => Js.Date.t = "addMinutes";
 
@@ -15,9 +19,10 @@ external subDays: (Js.Date.t, int) => Js.Date.t = "subDays";
 
 [@bs.module "date-fns"]
 external addDays: (Js.Date.t, int) => Js.Date.t = "addDays";
-
 [@bs.module "date-fns"]
-external format: (Js.Date.t, string) => string = "format";
+external _format: (Js.Date.t, string, localeConfig) => string = "format";
+
+let format = (date, string) => _format(date, string, {locale: seLocale});
 
 [@bs.module "date-fns"]
 external isAfter: (Js.Date.t, Js.Date.t) => bool = "isAfter";

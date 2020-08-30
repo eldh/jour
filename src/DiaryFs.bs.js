@@ -2,8 +2,8 @@
 
 import * as Fs from "./Fs.bs.js";
 import * as $$String from "bs-platform/lib/es6/string.js";
+import * as DateFns from "./DateFns.bs.js";
 import * as $$Promise from "reason-promise/src/js/promise.js";
-import * as DateFns from "date-fns";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.js";
 import * as ReactNativeFs from "react-native-fs";
 

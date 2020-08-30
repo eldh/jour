@@ -6,10 +6,12 @@ import * as $$Array from "bs-platform/lib/es6/array.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as React from "react";
 import * as Button from "./revy/Button.bs.js";
+import * as $$String from "bs-platform/lib/es6/string.js";
+import * as DateFns from "./DateFns.bs.js";
 import * as DiaryFs from "./DiaryFs.bs.js";
 import * as $$Promise from "reason-promise/src/js/promise.js";
 import * as TextArea from "./revy/TextArea.bs.js";
-import * as DateFns from "date-fns";
+import * as DateFns$1 from "date-fns";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 
 function now(param) {
@@ -66,7 +68,7 @@ function useDiaryDate(param) {
   var match$1 = match[0];
   var date = match$1.date;
   useInterval(2000, (function (param) {
-          if (!DateFns.isSameDay(new Date(Date.now()), date)) {
+          if (!DateFns$1.isSameDay(new Date(Date.now()), date)) {
             return Curry._1(dispatch, /* SetOutOfDate */0);
           }
           
@@ -134,7 +136,7 @@ function Editor(Props) {
                   })), React.createElement(Box.make, {
                   grow: 0,
                   children: React.createElement($$Text.make, {
-                        children: DateFns.format(date, "eeee, LLLL dd")
+                        children: $$String.capitalize_ascii(DateFns.format(date, "eeee dd LLLL"))
                       })
                 }), React.createElement(Box.make, {
                   backgroundColor: /* secondary */-499495052,

@@ -71,6 +71,7 @@ let useDiaryText = date => {
 let make = () => {
   let (date, handleChangeDate) = useDiaryDate();
   let (value, setValue) = useDiaryText(date);
+
   <Box
     align=`center
     padding=`half
@@ -81,7 +82,9 @@ let make = () => {
        <Box grow=0.> <Button onPress={_ => cb()}> "New date" </Button> </Box>
      })}
     <Box grow=0.>
-      <Text> {DateFns.format(date, "eeee, LLLL dd")} </Text>
+      <Text>
+        {DateFns.format(date, "eeee dd LLLL")->String.capitalize_ascii}
+      </Text>
     </Box>
     <Box
       maxWidth={`pct(100)}
