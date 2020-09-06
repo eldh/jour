@@ -1,12 +1,11 @@
 type t = {
   id: Credt.Util.id,
   date: Js.Date.t,
-  content: option(string),
+  // content: option(string),
 };
 
 type update =
-  | SetDate(Js.Date.t)
-  | SetContent(option(string));
+  | SetDate(Js.Date.t);
 
 module Config = {
   type nonrec t = t;
@@ -15,21 +14,22 @@ module Config = {
   let moduleId = "DiaryList" |> Credt.Util.idOfString;
   let reducer = entry =>
     fun
-    | SetDate(date) => ({...entry, date}, SetDate(entry.date))
-    | SetContent(content) => (
-        {...entry, content},
-        SetContent(entry.content),
-      );
+    | SetDate(date) => ({...entry, date}, SetDate(entry.date));
 };
 
-let makeEntry = (date, content) => {id: Credt.Util.makeId(), date, content};
+let makeEntry = (name, date) => {id: Credt.Util.idOfString(name), date};
 
 include Credt.List.Make(Config);
-module Context =
-  CredtListContext.Make({
-    type nonrec t = t;
-    type nonrec update = update;
-    let reducer = Config.reducer;
-    let getId = o => o.id;
-    let moduleId = "DiaryList"->Credt.Util.idOfString;
+let use = () => {
+  let (_, forceUpdate) = React.useReducer((c, _) => c + 1, 0);
+  let valRef = React.useRef(instance.getSnapshot());
+  React.useEffect0(() => {
+    let listener = _ops => {
+      valRef.current = instance.getSnapshot();
+      forceUpdate();
+    };
+    instance.addChangeListener(listener);
+    Some(_ => removeChangeListener(listener));
   });
+  valRef.current;
+};

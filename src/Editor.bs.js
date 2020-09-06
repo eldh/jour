@@ -2,8 +2,8 @@
 
 import * as Box from "./revy/Box.bs.js";
 import * as $$Text from "./revy/Text.bs.js";
-import * as $$Array from "bs-platform/lib/es6/array.js";
 import * as Curry from "bs-platform/lib/es6/curry.js";
+import * as Hooks from "./Hooks.bs.js";
 import * as React from "react";
 import * as Button from "./revy/Button.bs.js";
 import * as $$String from "bs-platform/lib/es6/string.js";
@@ -12,33 +12,12 @@ import * as DiaryFs from "./DiaryFs.bs.js";
 import * as $$Promise from "reason-promise/src/js/promise.js";
 import * as TextArea from "./revy/TextArea.bs.js";
 import * as DateFns$1 from "date-fns";
+import * as Belt_List from "bs-platform/lib/es6/belt_List.js";
+import * as DiaryList from "./DiaryList.bs.js";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
 
 function now(param) {
   return new Date(Date.now());
-}
-
-function useInterval(delay, callback, deps) {
-  var savedCallback = React.useRef(callback);
-  React.useEffect((function () {
-          savedCallback.current = callback;
-          
-        }), [callback]);
-  React.useEffect((function () {
-          var handler = savedCallback.current;
-          var id = setInterval(handler, delay);
-          return (function (param) {
-                    clearInterval(id);
-                    
-                  });
-        }), $$Array.concat({
-            hd: [delay],
-            tl: {
-              hd: deps,
-              tl: /* [] */0
-            }
-          }));
-  
 }
 
 function reducer(state, action) {
@@ -67,7 +46,7 @@ function useDiaryDate(param) {
   var dispatch = match[1];
   var match$1 = match[0];
   var date = match$1.date;
-  useInterval(2000, (function (param) {
+  Hooks.useInterval(2000, (function (param) {
           if (!DateFns$1.isSameDay(new Date(Date.now()), date)) {
             return Curry._1(dispatch, /* SetOutOfDate */0);
           }
@@ -109,10 +88,35 @@ function useDiaryText(date) {
         ];
 }
 
+function useDiaryList(param) {
+  React.useEffect((function () {
+          $$Promise.get(DiaryFs.getDiaryEntries(undefined), (function (res) {
+                  if (res.TAG) {
+                    console.log("Error fetching diary list: ", res._0);
+                    return ;
+                  }
+                  var entries = res._0;
+                  Curry._1(DiaryList.apply, Belt_List.map(entries, (function (param) {
+                              return {
+                                      TAG: /* Append */0,
+                                      _0: DiaryList.makeEntry(param[0], param[1])
+                                    };
+                            })));
+                  console.log("Got diary list: ", entries);
+                  
+                }));
+          
+        }), []);
+  
+}
+
 function Editor(Props) {
   var match = useDiaryDate(undefined);
   var date = match[0];
   var match$1 = useDiaryText(date);
+  useDiaryList(undefined);
+  var v = DiaryList.use(undefined);
+  console.log("DiaryList", Belt_List.toArray(v));
   return React.createElement(Box.make, {
               align: /* center */98248149,
               alignContent: /* center */98248149,
@@ -160,11 +164,11 @@ var make = Editor;
 
 export {
   now ,
-  useInterval ,
   reducer ,
   initialState ,
   useDiaryDate ,
   useDiaryText ,
+  useDiaryList ,
   make ,
   
 }

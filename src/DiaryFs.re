@@ -9,9 +9,7 @@ let ensureFolderExists = folder =>
 let writeToFile = (~file, ~contents, ~folder=diaryFolder, ()) => {
   ensureFolderExists(folder)
   ->Promise.flatMapOk(() => {
-      Js.log2("ok", "ok");
-
-      Fs.writeFile(~filepath=folder ++ "/" ++ file, ~contents, ());
+      Fs.writeFile(~filepath=folder ++ "/" ++ file, ~contents, ())
     });
 };
 
@@ -19,7 +17,12 @@ let getFilenameForDate = d => {
   DateFns.format(d, "yyyy-MM-dd") ++ ".md";
 };
 
-let filenameToDate = str => {
+let validateFilename = str => {
+  Js.String.match(Js.Re.fromString("\d{4}-\d{2}-\d{2}\.md"), str)
+  ->Belt.Option.map(Belt.Array.getExn(_, 0));
+};
+
+let validFilenameToDate = str => {
   let subStr = String.sub(str);
   let year = subStr(0, 4);
   let month = subStr(5, 2);
@@ -28,15 +31,19 @@ let filenameToDate = str => {
   Js.Date.fromString([|year, month, day|]->Js.Array.joinWith("-", _));
 };
 
-let createEntryFromReadDirInfo = (entry: Fs.readDirItem) => (
-  entry.name,
-  filenameToDate(entry.name),
-);
+let createEntryFromReadDirInfo = (entry: Fs.readDirItem) => {
+  entry.name
+  ->validateFilename
+  ->Belt.Option.map(name => (name, validFilenameToDate(name)));
+};
 
 let getDiaryEntries = () => {
   Fs.(readDir(documentDirectoryPath ++ "/.diary"))
   ->Promise.mapOk(entries => {
-      entries->Belt.Array.map(createEntryFromReadDirInfo)
+      entries
+      ->Belt.Array.map(createEntryFromReadDirInfo)
+      ->Belt.Array.keepMap(z => z)
+      ->Belt.List.fromArray
     });
 };
 

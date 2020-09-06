@@ -1,21 +1,18 @@
 module Make = (Config: Credt.List.ListConfig) => {
-  module MyList = Credt.List.Make(Config);
+  module InternalList = Credt.List.Make(Config);
+  let use = () => {
+    let (_, forceUpdate) = React.useReducer((c, _) => c + 1, 0);
+    let valRef = React.useRef(InternalList.instance.getSnapshot());
+    React.useEffect0(() => {
+      let listener = v => {
+        valRef.current = InternalList.instance.getSnapshot();
 
-  let context = React.createContext(MyList.instance);
-
-  module Provider = {
-    let makeProps = (~children, ()) => {
-      "value": MyList.instance,
-      "children": children,
-    };
-
-    let make = React.Context.provider(context);
+        forceUpdate();
+      };
+      InternalList.instance.addChangeListener(listener);
+      Some(_ => InternalList.removeChangeListener(listener));
+    });
+    valRef.current;
   };
-  // /* Using context */
-  // [@react.component]
-  // let make = () => {
-  //   let (value, setValue) = React.useContext(context);
-  //   let onClick = _ => setValue(prevValue => prevValue ++ "!");
-  //   <button onClick> {React.string(value)} </button>;
   // };
 };

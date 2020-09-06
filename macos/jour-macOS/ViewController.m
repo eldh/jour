@@ -14,7 +14,7 @@
   NSView *view = [self view];
 
   [view addSubview:rootView];
-  [rootView setBackgroundColor:[NSColor windowBackgroundColor]];
+  [rootView setBackgroundColor:[NSColor blackColor]];
   [rootView setFrame:[view bounds]];
   [rootView setAutoresizingMask:(NSViewMinXMargin | NSViewMinXMargin | NSViewMinYMargin | NSViewMaxYMargin | NSViewWidthSizable | NSViewHeightSizable)];
 }

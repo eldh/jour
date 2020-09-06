@@ -1,26 +1,5 @@
 let now = () => Js.Date.fromFloat(Js.Date.now());
 
-let useInterval = (delay, callback: unit => unit, deps) => {
-  let savedCallback = React.useRef(callback);
-
-  React.useEffect1(
-    () => {
-      savedCallback.current = callback;
-      None;
-    },
-    [|callback|],
-  );
-
-  React.useEffect1(
-    () => {
-      let handler = savedCallback.current;
-
-      let id = Js.Global.setInterval(handler, delay);
-      Some(() => Js.Global.clearInterval(id));
-    },
-    Array.concat([[|delay|], deps->Obj.magic]),
-  );
-};
 type state = {
   date: Js.Date.t,
   outOfDate: bool,
@@ -39,7 +18,7 @@ let initialState = {date: now(), outOfDate: false};
 let useDiaryDate = () => {
   let ({date, outOfDate}, dispatch) =
     React.useReducer(reducer, initialState);
-  useInterval(
+  Hooks.useInterval(
     2000,
     () =>
       if (!DateFns.isSameDay(now(), date)) {
@@ -67,10 +46,35 @@ let useDiaryText = date => {
   (value, v => setValue(_ => v));
 };
 
+let useDiaryList = () => {
+  React.useEffect0(() => {
+    DiaryFs.getDiaryEntries()
+    ->Promise.get(res => {
+        switch (res) {
+        | Ok(entries) =>
+          DiaryList.(
+            entries
+            ->Belt.List.map(((name, date)) =>
+                Append(makeEntry(name, date))
+              )
+            ->apply
+            ->(_ => Js.log2("Got diary list: ", entries))
+          )
+        // ->ignore
+        | Error(e) => Js.log2("Error fetching diary list: ", e)
+        }
+      });
+    None;
+  });
+};
+
 [@react.component]
 let make = () => {
   let (date, handleChangeDate) = useDiaryDate();
   let (value, setValue) = useDiaryText(date);
+  useDiaryList();
+  let v = DiaryList.use();
+  Js.log2("DiaryList", v->Belt.List.toArray);
 
   <Box
     align=`center
