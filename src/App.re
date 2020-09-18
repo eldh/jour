@@ -20,7 +20,7 @@ Core.(
         error: `rgb((230, 26, 26)) |> Lab.fromRGB,
         brand1: `rgb((213, 54, 222)) |> Lab.fromRGB,
         brand2: `rgb((54, 213, 222)) |> Lab.fromRGB,
-        body: `lab((3., 0., 0., 1.)),
+        body: `lab((1., 0., 0., 1.)),
         bodyUp1: `lab((15., 0., 0., 1.)),
         bodyUp2: `lab((20., 0., 0., 1.)),
         bodyUp3: `lab((25., 0., 0., 1.)),

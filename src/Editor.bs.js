@@ -6,6 +6,7 @@ import * as Curry from "bs-platform/lib/es6/curry.js";
 import * as Hooks from "./Hooks.bs.js";
 import * as React from "react";
 import * as Button from "./revy/Button.bs.js";
+import * as Spacer from "./revy/Spacer.bs.js";
 import * as $$String from "bs-platform/lib/es6/string.js";
 import * as DateFns from "./DateFns.bs.js";
 import * as DiaryFs from "./DiaryFs.bs.js";
@@ -89,31 +90,34 @@ function useDiaryText(date) {
 }
 
 function useDiaryList(param) {
-  React.useEffect((function () {
-          $$Promise.get(DiaryFs.getDiaryEntries(undefined), (function (res) {
-                  if (res.TAG) {
-                    console.log("Error fetching diary list: ", res._0);
-                    return ;
-                  }
-                  var entries = res._0;
-                  Curry._1(DiaryList.apply, Belt_List.map(entries, (function (param) {
-                              return {
-                                      TAG: /* Append */0,
-                                      _0: DiaryList.makeEntry(param[0], param[1])
-                                    };
-                            })));
-                  console.log("Got diary list: ", entries);
-                  
-                }));
-          
-        }), []);
-  
+  return Hooks.useInterval(5000, (function (param) {
+                return $$Promise.get(DiaryFs.getDiaryEntries(undefined), (function (res) {
+                              if (res.TAG) {
+                                console.log("Error fetching diary list: ", res._0);
+                                return ;
+                              }
+                              Curry._1(DiaryList.apply, Belt_List.keepMap(res._0, (function (param) {
+                                          var entry = DiaryList.makeEntry(param[0], param[1]);
+                                          var _e = Curry._1(DiaryList.get, entry.id);
+                                          if (_e !== undefined) {
+                                            return ;
+                                          } else {
+                                            return {
+                                                    TAG: /* Append */0,
+                                                    _0: entry
+                                                  };
+                                          }
+                                        })));
+                              
+                            }));
+              }), []);
 }
 
 function Editor(Props) {
   var match = useDiaryDate(undefined);
   var date = match[0];
   var match$1 = useDiaryText(date);
+  var setValue = match$1[1];
   useDiaryList(undefined);
   var v = DiaryList.use(undefined);
   console.log("DiaryList", Belt_List.toArray(v));
@@ -132,17 +136,21 @@ function Editor(Props) {
                                 grow: 0,
                                 children: React.createElement(Button.make, {
                                       onPress: (function (param) {
+                                          Curry._1(setValue, "");
                                           return Curry._1(cb, undefined);
                                         }),
                                       children: "New date"
                                     })
                               });
                   })), React.createElement(Box.make, {
+                  alignSelf: /* flexStart */662439529,
                   grow: 0,
                   children: React.createElement($$Text.make, {
+                        color: /* quiet */-571635532,
+                        fontFamily: /* mono */-933176285,
                         children: $$String.capitalize_ascii(DateFns.format(date, "eeee dd LLLL"))
                       })
-                }), React.createElement(Box.make, {
+                }), React.createElement(Spacer.make, {}), React.createElement(Box.make, {
                   backgroundColor: /* secondary */-499495052,
                   grow: 1,
                   width: {
@@ -154,7 +162,7 @@ function Editor(Props) {
                     VAL: 100
                   },
                   children: React.createElement(TextArea.make, {
-                        onChangeText: match$1[1],
+                        onChangeText: setValue,
                         value: match$1[0]
                       })
                 }));

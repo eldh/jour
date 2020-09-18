@@ -17,7 +17,7 @@
     "date-fns": "^2.15.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
-    "react-native-fs": "eldh/react-native-fs",
+    "react-native-fs": "eldh/react-native-fs#master",
     "react-native-macos": "^0.61.0-0",
     "reason-promise": "^1.1.1",
     "reason-react": "^0.9.1",

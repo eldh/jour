@@ -6,7 +6,7 @@ let make = (~onChangeText, ~value) => {
       backgroundColor(`body),
       fontWeight(`normal),
       color(`body),
-      padding2(`half, `half),
+      padding2(`noSpace, `noSpace),
       width(`pct(100)),
       flexGrow(1.),
       fontFamily(`mono),

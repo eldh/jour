@@ -4,9 +4,8 @@ module Make = (Config: Credt.List.ListConfig) => {
     let (_, forceUpdate) = React.useReducer((c, _) => c + 1, 0);
     let valRef = React.useRef(InternalList.instance.getSnapshot());
     React.useEffect0(() => {
-      let listener = v => {
+      let listener = _ => {
         valRef.current = InternalList.instance.getSnapshot();
-
         forceUpdate();
       };
       InternalList.instance.addChangeListener(listener);
@@ -14,5 +13,4 @@ module Make = (Config: Credt.List.ListConfig) => {
     });
     valRef.current;
   };
-  // };
 };

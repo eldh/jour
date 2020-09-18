@@ -96,7 +96,7 @@ Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
           body: {
             HASH: /* lab */5392461,
             VAL: [
-              3,
+              1,
               0,
               0,
               1

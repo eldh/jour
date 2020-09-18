@@ -15,7 +15,7 @@ function TextArea(Props) {
           tl: {
             hd: S.color(undefined, undefined, /* body */-1055163742),
             tl: {
-              hd: S.padding2(/* half */-989320781, /* half */-989320781),
+              hd: S.padding2(/* noSpace */-731246395, /* noSpace */-731246395),
               tl: {
                 hd: S.width({
                       HASH: /* pct */5591841,

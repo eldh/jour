@@ -47,25 +47,33 @@ let useDiaryText = date => {
 };
 
 let useDiaryList = () => {
-  React.useEffect0(() => {
-    DiaryFs.getDiaryEntries()
-    ->Promise.get(res => {
-        switch (res) {
-        | Ok(entries) =>
-          DiaryList.(
-            entries
-            ->Belt.List.map(((name, date)) =>
-                Append(makeEntry(name, date))
-              )
-            ->apply
-            ->(_ => Js.log2("Got diary list: ", entries))
-          )
-        // ->ignore
-        | Error(e) => Js.log2("Error fetching diary list: ", e)
-        }
-      });
-    None;
-  });
+  Hooks.useInterval(
+    5000,
+    () => {
+      DiaryFs.getDiaryEntries()
+      ->Promise.get(res => {
+          switch (res) {
+          | Ok(entries) =>
+            DiaryList.(
+              entries
+              ->Belt.List.keepMap(((name, date)) => {
+                  let entry = makeEntry(name, date);
+                  switch (get(entry.id)) {
+                  | Some(_e) => None
+                  | None => Some(Append(entry))
+                  };
+                })
+              ->apply
+              ->ignore
+            )
+          // ->(_ => Js.log2("Got diary list: ", entries))
+          // ->ignore
+          | Error(e) => Js.log2("Error fetching diary list: ", e)
+          }
+        })
+    },
+    [||],
+  );
 };
 
 [@react.component]
@@ -83,13 +91,20 @@ let make = () => {
     grow=1.
     height={`pct(100)}>
     {handleChangeDate->Belt.Option.mapWithDefault(React.null, cb => {
-       <Box grow=0.> <Button onPress={_ => cb()}> "New date" </Button> </Box>
+       <Box grow=0.>
+         <Button
+           onPress={_ => {
+             setValue("");
+             cb();
+           }}> "New date" </Button>
+       </Box>
      })}
-    <Box grow=0.>
-      <Text>
+    <Box grow=0. alignSelf=`flexStart>
+      <Text fontFamily=`mono color=`quiet>
         {DateFns.format(date, "eeee dd LLLL")->String.capitalize_ascii}
       </Text>
     </Box>
+    <Spacer />
     <Box
       maxWidth={`pct(100)}
       width={`px(700)}

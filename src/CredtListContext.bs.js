@@ -13,7 +13,7 @@ function Make(Config) {
     var forceUpdate = match[1];
     var valRef = React.useRef(Curry._1(InternalList.instance.getSnapshot, undefined));
     React.useEffect((function () {
-            var listener = function (v) {
+            var listener = function (param) {
               valRef.current = Curry._1(InternalList.instance.getSnapshot, undefined);
               return Curry._1(forceUpdate, undefined);
             };
