@@ -12,21 +12,21 @@
     "start:macos": "node node_modules/react-native-macos/local-cli/cli.js start --use-react-native-macos"
   },
   "dependencies": {
-    "bs-platform": "8.0.3",
+    "bs-platform": "8.4.2",
     "credt": "^0.1.4",
     "date-fns": "^2.15.0",
     "react": "16.9.0",
     "react-native": "0.61.5",
     "react-native-fs": "eldh/react-native-fs#master",
     "react-native-macos": "^0.61.0-0",
-    "reason-promise": "^1.1.1",
+    "reason-promise": "^1.1.2",
     "reason-react": "^0.9.1",
     "reason-react-native": "^0.62.2",
     "reason-react-update": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.2",
-    "@babel/runtime": "^7.6.2",
+    "@babel/core": "^7.12.10",
+    "@babel/runtime": "^7.12.5",
     "@react-native-community/eslint-config": "^0.0.5",
     "babel-jest": "^24.9.0",
     "eslint": "^6.5.1",
