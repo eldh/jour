@@ -25,7 +25,7 @@ Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
             tl: /* [] */0
           },
           alt: {
-            hd: "System",
+            hd: "Georgia",
             tl: /* [] */0
           }
         }, {
@@ -168,9 +168,9 @@ Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
           quiet: Lab.fromRGB({
                 NAME: "rgb",
                 VAL: [
-                  130,
-                  130,
-                  130
+                  115,
+                  115,
+                  115
                 ]
               })
         }, 700, undefined));

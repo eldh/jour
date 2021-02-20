@@ -525,10 +525,10 @@ module Styles = {
   type listenerId
   type mediaQueryList = {
     "matches": bool,
-    "addListener": @bs.meth ((unit => unit) => listenerId),
-    "removeListener": @bs.meth (listenerId => unit),
+    "addListener": @meth ((unit => unit) => listenerId),
+    "removeListener": @meth (listenerId => unit),
   }
-  @bs.val @bs.scope("window")
+  @val @scope("window")
   external matchMedia: string => mediaQueryList = "matchMedia"
 
   let useMatchesMedia = query => {

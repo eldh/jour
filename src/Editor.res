@@ -29,13 +29,30 @@ let useDiaryDate = () => {
 
 let useDiaryText = date => {
   let (value, setValue) = React.useState(() => "")
+  let hasReadFileRef = React.useRef(false)
+
   React.useEffect1(() => {
-    DiaryFs.writeDiaryToFs(~date, ~contents=value, ())->Promise.get(x =>
-      switch x {
-      | Ok() => ()
-      | Error(e) => Js.log2("write to file error: ", e)
+    Js.log("read file")
+    DiaryFs.readDiaryFromFs(~date, ())->Promise.get(result =>
+      switch result {
+      | Ok(content) => {
+          hasReadFileRef.current = true
+          setValue(_ => content)
+        }
+      | Error(e) => Js.log2("read  file error: ", e)
       }
     )
+    None
+  }, [])
+  React.useEffect1(() => {
+    if value !== "" && hasReadFileRef.current {
+      DiaryFs.writeDiaryToFs(~date, ~contents=value, ())->Promise.get(x =>
+        switch x {
+        | Ok() => ()
+        | Error(e) => Js.log2("write to file error: ", e)
+        }
+      )
+    }
     None
   }, [value])
   (value, v => setValue(_ => v))
@@ -58,9 +75,8 @@ let useDiaryList = () =>
             }
           })
           ->apply
+          ->(_ => Js.log2("Got diary list: ", entries))
           ->ignore
-        // ->(_ => Js.log2("Got diary list: ", entries))
-        // ->ignore
         | Error(e) => Js.log2("Error fetching diary list: ", e)
         }
       ),
@@ -72,29 +88,52 @@ let make = () => {
   let (date, handleChangeDate) = useDiaryDate()
   let (value, setValue) = useDiaryText(date)
   useDiaryList()
-  let v = DiaryList.use()
-  Js.log2("DiaryList", v->Belt.List.toArray)
+  // let v = DiaryList.use()
+  // Js.log2("DiaryList", v->Belt.List.toArray)
 
-  <Box align=#center padding=#half alignContent=#center grow=1. height=#pct(100)>
-    {handleChangeDate->Belt.Option.mapWithDefault(React.null, cb =>
-      <Box grow=0.>
-        <Button
-          onPress={_ => {
-            setValue("")
-            cb()
-          }}>
-          "New date"
-        </Button>
+  <ReactNative.View
+    style={
+      open S
+      list{flexGrow(1.)} |> S.make
+    }>
+    <Box align=#center padding=#half alignContent=#center grow=1. height=#pct(100)>
+      <Box maxWidth=#pct(100) width=#px(600) grow=1.>
+        {handleChangeDate->Belt.Option.mapWithDefault(React.null, cb =>
+          <Box grow=0.>
+            <Button
+              onPress={_ => {
+                setValue("")
+                cb()
+              }}>
+              "New date"
+            </Button>
+          </Box>
+        )}
+        <Box grow=0. alignSelf=#flexStart>
+          <Text weight=#_700 size=4 color=#quiet>
+            {DateFns.format(date, "eeee dd LLLL")->String.capitalize_ascii}
+          </Text>
+        </Box>
+        <Spacer />
+        <ReactNative.ScrollView
+          style={
+            open S
+            list{width(#pct(100)), flexGrow(1.), backgroundColor(#primary)} |> S.make
+          }
+          contentContainerStyle={
+            open S
+            list{
+              width(#pct(100)),
+              alignContent(#stretch),
+              justifyContent(#center),
+              alignItems(#stretch),
+              flexGrow(1.),
+              backgroundColor(#primary),
+            } |> S.make
+          }>
+          <TextArea value onChangeText=setValue />
+        </ReactNative.ScrollView>
       </Box>
-    )}
-    <Box grow=0. alignSelf=#flexStart>
-      <Text fontFamily=#mono color=#quiet>
-        {DateFns.format(date, "eeee dd LLLL")->String.capitalize_ascii}
-      </Text>
     </Box>
-    <Spacer />
-    <Box maxWidth=#pct(100) width=#px(700) backgroundColor=#secondary grow=1.>
-      <TextArea value onChangeText=setValue />
-    </Box>
-  </Box>
+  </ReactNative.View>
 }

@@ -22,12 +22,30 @@ function TextArea(Props) {
                       VAL: 100
                     }),
                 tl: {
-                  hd: S.flexGrow(1),
+                  hd: S.height({
+                        NAME: "pct",
+                        VAL: 100
+                      }),
                   tl: {
-                    hd: S.fontFamily("mono"),
+                    hd: S.flexGrow(1),
                     tl: {
-                      hd: S.lineHeight(Core.Styles.getLineHeight(0, 1, undefined)),
-                      tl: /* [] */0
+                      hd: S.fontSize(1),
+                      tl: {
+                        hd: S.flexBasis({
+                              NAME: "pct",
+                              VAL: 100
+                            }),
+                        tl: {
+                          hd: S.fontFamily("body"),
+                          tl: {
+                            hd: S.letterSpacing(0.5),
+                            tl: {
+                              hd: S.lineHeight(Core.Styles.getLineHeight(0, 1, undefined)),
+                              tl: /* [] */0
+                            }
+                          }
+                        }
+                      }
                     }
                   }
                 }
@@ -37,6 +55,7 @@ function TextArea(Props) {
         }
       });
   return React.createElement(ReactNative.TextInput, {
+              autoCorrect: true,
               multiline: true,
               onChangeText: onChangeText,
               spellCheck: true,

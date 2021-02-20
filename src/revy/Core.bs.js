@@ -2,14 +2,14 @@
 
 import * as Css from "./Css.bs.js";
 import * as Lab from "./Lab.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.js";
+import * as Curry from "bs-platform/lib/es6/curry.mjs";
 import * as React from "react";
-import * as $$String from "bs-platform/lib/es6/string.js";
-import * as Caml_int32 from "bs-platform/lib/es6/caml_int32.js";
-import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.js";
+import * as $$String from "bs-platform/lib/es6/string.mjs";
+import * as Caml_int32 from "bs-platform/lib/es6/caml_int32.mjs";
+import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.mjs";
 import * as UnsafeCreateReactElement from "./UnsafeCreateReactElement.bs.js";
 
-var InvalidValue = Caml_exceptions.create("Core.InvalidValue");
+var InvalidValue = /* @__PURE__ */Caml_exceptions.create("Core.InvalidValue");
 
 function identity(a) {
   return a;

@@ -3,7 +3,7 @@
 import * as S from "./S.bs.js";
 import * as Core from "./Core.bs.js";
 import * as React from "react";
-import * as Belt_Option from "bs-platform/lib/es6/belt_Option.js";
+import * as Belt_Option from "bs-platform/lib/es6/belt_Option.mjs";
 import * as ReactNative from "react-native";
 
 function useCardStyle(p, m, param) {

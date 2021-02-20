@@ -3,10 +3,10 @@
 import * as S from "./S.bs.js";
 import * as Core from "./Core.bs.js";
 import * as ReactNative from "react-native";
-import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.js";
+import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.mjs";
 import * as UnsafeCreateReactElement from "./UnsafeCreateReactElement.bs.js";
 
-var InvalidValue = Caml_exceptions.create("Text.InvalidValue");
+var InvalidValue = /* @__PURE__ */Caml_exceptions.create("Text.InvalidValue");
 
 function getTextStyles(extraStyleOpt, size, color_, quietOpt, tint, fontFamily_Opt, _textDecoration_Opt, lineHeight_, weight_, param) {
   var extraStyle = extraStyleOpt !== undefined ? extraStyleOpt : /* [] */0;

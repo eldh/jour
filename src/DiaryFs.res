@@ -8,6 +8,11 @@ let writeToFile = (~file, ~contents, ~folder=diaryFolder, ()) =>
     Fs.writeFile(~filepath=folder ++ ("/" ++ file), ~contents, ())
   )
 
+let readFile = (~file, ~folder=diaryFolder, ()) =>
+  ensureFolderExists(folder)->Promise.flatMapOk(() =>
+    Fs.readFile(~filepath=folder ++ ("/" ++ file), ())
+  )
+
 let getFilenameForDate = d => DateFns.format(d, "yyyy-MM-dd") ++ ".md"
 
 let validateFilename = str =>
@@ -38,5 +43,7 @@ let getDiaryEntries = () =>
     ->Belt.List.fromArray
   )
 
+let readDiaryFromFs = (~date, ()) => readFile(~file=getFilenameForDate(date), ())
+
 let writeDiaryToFs = (~date, ~contents, ()) =>
-  writeToFile(~file="test-" ++ getFilenameForDate(date), ~contents, ())
+  writeToFile(~file=getFilenameForDate(date), ~contents, ())

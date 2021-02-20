@@ -2,7 +2,7 @@
 
 import * as $$Text from "./Text.bs.js";
 import * as React from "react";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.mjs";
 
 function Heading(Props) {
   var levelOpt = Props.level;

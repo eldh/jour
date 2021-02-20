@@ -3,9 +3,9 @@
 import * as Box from "./Box.bs.js";
 import * as Core from "./Core.bs.js";
 import * as View from "./View.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.js";
+import * as Curry from "bs-platform/lib/es6/curry.mjs";
 import * as React from "react";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.js";
+import * as Caml_option from "bs-platform/lib/es6/caml_option.mjs";
 import * as ReactNative from "react-native";
 
 function TouchableOpacity(Props) {

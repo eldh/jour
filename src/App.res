@@ -11,7 +11,7 @@
         body: list{"System"},
         title: list{"System"},
         mono: list{"Menlo"},
-        alt: list{"System"},
+        alt: list{"Georgia"},
       },
       ~hues={
         primary: #rgb(18, 120, 240) |> Lab.fromRGB,
@@ -30,7 +30,7 @@
         bodyDown3: #lab(0., 0., 0., 1.),
         bodyText: #lab(80., 0., 0., 1.),
         neutral: #rgb(40, 40, 40) |> Lab.fromRGB,
-        quiet: #rgb(130, 130, 130) |> Lab.fromRGB,
+        quiet: #rgb(115, 115, 115) |> Lab.fromRGB,
       },
       ~gridWidth=700,
       (),
@@ -42,4 +42,6 @@ let style = {
   list{backgroundColor(#body), width(#pct(100)), flex(1.), flexGrow(1.), padding(Some(#double))}
 }->S.make
 @react.component
-let make = () => <ReactNative.View style> <Editor /> </ReactNative.View>
+let make = () => {
+  <ReactNative.View style> <Editor /> </ReactNative.View>
+}

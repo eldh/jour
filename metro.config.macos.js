@@ -10,9 +10,11 @@ const rnmPath = path.resolve(__dirname, 'node_modules/react-native-macos');
 
 module.exports = {
   resolver: {
+    sourceExts: ['js', 'json', 'ts', 'tsx', 'mjs'],
     extraNodeModules: {
       'react-native': rnmPath,
     },
+
     platforms: ['macos', 'ios', 'android'],
     blacklistRE: blacklist([/node_modules\/react-native\/.*/]),
   },
