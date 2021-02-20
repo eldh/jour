@@ -20,11 +20,11 @@ let getLinkStyle = () => {
 @react.component
 let make = (
   ~href as _,
-  ~onClick=ignore,
-  ~size=0,
-  ~lineHeight=0,
+  ~onClick as _=ignore,
+  ~size as _=0,
+  ~lineHeight as _=0,
   ~margin as _=?,
-  ~weight=#normal,
+  ~weight as _=#normal,
   ~tintColor as _=?,
   ~children,
   (),
@@ -33,24 +33,26 @@ let make = (
   //   Text.getTextStyles(~tintColor?, ~size, ~lineHeight, ~weight, ());
   // let linkStyle = getLinkStyle();
   <ReactNative.Text>
-  // href
-  // onClick
-  // className={
-  //   [textStyle, linkStyle, Styles.getMargin(margin)]
-  //   |> List.concat
-  //   |> Css.style
-  // }
-    {children->React.string}
+    {
+      // href
+      // onClick
+      // className={
+      //   [textStyle, linkStyle, Styles.getMargin(margin)]
+      //   |> List.concat
+      //   |> Css.style
+      // }
+      children->React.string
+    }
   </ReactNative.Text>
 
 module Button = {
   @react.component
   let make = (
     ~onClick,
-    ~size=0,
-    ~lineHeight=0,
+    ~size as _=0,
+    ~lineHeight as _=0,
     ~margin as _=?,
-    ~weight=#normal,
+    ~weight as _=#normal,
     ~tintColor as _=?,
     ~children,
     (),

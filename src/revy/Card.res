@@ -19,7 +19,7 @@ let useCardStyle = (~padding as p=?, ~margin as m=?, ()) => {
 }
 
 @react.component
-let make = (~style as style_=?, ~grow=1., ~padding=#single, ~margin=?, ~children, ()) => {
+let make = (~style as style_=?, ~grow as _=1., ~padding=#single, ~margin=?, ~children, ()) => {
   let default = useCardStyle(~padding, ~margin?, ())
   let style = style_->Belt.Option.mapWithDefault(default, S.merge(default))
 

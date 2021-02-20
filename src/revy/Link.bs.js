@@ -47,7 +47,19 @@ function getLinkStyle(param) {
 }
 
 function Link(Props) {
+  var $staropt$star = Props.onClick;
+  var $staropt$star$1 = Props.size;
+  var $staropt$star$2 = Props.lineHeight;
+  var $staropt$star$3 = Props.weight;
   var children = Props.children;
+  if ($staropt$star === undefined) {
+    ((function (prim) {
+          
+        }));
+  }
+  $staropt$star$1 !== undefined;
+  $staropt$star$2 !== undefined;
+  $staropt$star$3 !== undefined;
   return React.createElement(ReactNative.Text, {
               children: children
             });
@@ -55,7 +67,13 @@ function Link(Props) {
 
 function Link$Button(Props) {
   var onClick = Props.onClick;
+  var $staropt$star = Props.size;
+  var $staropt$star$1 = Props.lineHeight;
+  var $staropt$star$2 = Props.weight;
   var children = Props.children;
+  $staropt$star !== undefined;
+  $staropt$star$1 !== undefined;
+  $staropt$star$2 !== undefined;
   return React.createElement(TouchableOpacity.make, {
               onPress: onClick,
               children: children

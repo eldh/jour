@@ -3,7 +3,7 @@ let make = (
   ~level=#h1,
   ~style=?,
   ~color=#body,
-  ~margin=#margin2(#noSpace, #noSpace),
+  ~margin as _=#margin2(#noSpace, #noSpace),
   ~children,
   (),
 ) => {

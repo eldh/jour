@@ -74,10 +74,12 @@ function useCardStyle(p, m, param) {
 
 function Card(Props) {
   var style_ = Props.style;
-  var paddingOpt = Props.padding;
+  var $staropt$star = Props.grow;
+  var $staropt$star$1 = Props.padding;
   var margin = Props.margin;
   var children = Props.children;
-  var padding = paddingOpt !== undefined ? paddingOpt : "single";
+  $staropt$star !== undefined;
+  var padding = $staropt$star$1 !== undefined ? $staropt$star$1 : "single";
   var $$default = useCardStyle(padding, margin, undefined);
   var style = Belt_Option.mapWithDefault(style_, $$default, (function (param) {
           return S.merge($$default, param);

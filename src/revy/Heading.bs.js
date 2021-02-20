@@ -8,9 +8,13 @@ function Heading(Props) {
   var levelOpt = Props.level;
   var style = Props.style;
   var colorOpt = Props.color;
+  var $staropt$star = Props.margin;
   var children = Props.children;
   var level = levelOpt !== undefined ? levelOpt : "h1";
   var color = colorOpt !== undefined ? colorOpt : "body";
+  if ($staropt$star === undefined) {
+    
+  }
   var match = level === "h2" ? [
       4,
       "bold"

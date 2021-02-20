@@ -84,7 +84,7 @@ function string_of_p3(r, g, b, a) {
                   ))))));
 }
 
-function string_of_color(highlight, tint, c) {
+function string_of_color(param, param$1, c) {
   if (typeof c === "string") {
     return "transparent";
   }
@@ -219,48 +219,48 @@ function textShadowRadius(v) {
 }
 
 function textDecorationColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("textDecorationColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("textDecorationColor", string_of_color(undefined, undefined, v$1));
 }
 
 function textShadowColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("textShadowColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("textShadowColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderBottomColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderBottomColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderBottomColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderEndColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderEndColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderEndColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderLeftColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderLeftColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderLeftColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderRightColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderRightColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderRightColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderStartColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderStartColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderStartColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderTopColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("borderTopColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("borderTopColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderStyle(v) {
@@ -270,8 +270,8 @@ function borderStyle(v) {
 }
 
 function shadowColor(v) {
-  var arg = Core.Styles.getColor;
-  return o("shadowColor", string_of_color(undefined, undefined, Curry._3(arg, undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("shadowColor", string_of_color(undefined, undefined, v$1));
 }
 
 function shadowOpacity(v) {
@@ -481,33 +481,27 @@ function maxWidth(v) {
 }
 
 function top(v) {
-  var arg = Core.Styles.getSpace;
-  return o("top", Curry._3(arg, undefined, undefined, v));
+  return o("top", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function left(v) {
-  var arg = Core.Styles.getSpace;
-  return o("left", Curry._3(arg, undefined, undefined, v));
+  return o("left", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function bottom(v) {
-  var arg = Core.Styles.getSpace;
-  return o("bottom", Curry._3(arg, undefined, undefined, v));
+  return o("bottom", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function right(v) {
-  var arg = Core.Styles.getSpace;
-  return o("right", Curry._3(arg, undefined, undefined, v));
+  return o("right", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function start(v) {
-  var arg = Core.Styles.getSpace;
-  return o("start", Curry._3(arg, undefined, undefined, v));
+  return o("start", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function end_(v) {
-  var arg = Core.Styles.getSpace;
-  return o("end", Curry._3(arg, undefined, undefined, v));
+  return o("end", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function overflow(v) {
@@ -521,16 +515,14 @@ function position(v) {
 }
 
 function padding2(v, h) {
-  var arg = Core.Styles.getSpace;
-  var arg$1 = Core.Styles.getSpace;
   var v_0 = [
     "paddingHorizontal",
-    Curry._3(arg, undefined, undefined, h)
+    Core.Styles.getSpace(undefined, undefined, h)
   ];
   var v_1 = {
     hd: [
       "paddingVertical",
-      Curry._3(arg$1, undefined, undefined, v)
+      Core.Styles.getSpace(undefined, undefined, v)
     ],
     tl: /* [] */0
   };
@@ -542,28 +534,24 @@ function padding2(v, h) {
 }
 
 function padding4(l_, t, r, b) {
-  var arg = Core.Styles.getSpace;
-  var arg$1 = Core.Styles.getSpace;
-  var arg$2 = Core.Styles.getSpace;
-  var arg$3 = Core.Styles.getSpace;
   var v_0 = [
     "paddingLeft",
-    Curry._3(arg, undefined, undefined, l_)
+    Core.Styles.getSpace(undefined, undefined, l_)
   ];
   var v_1 = {
     hd: [
       "paddingTop",
-      Curry._3(arg$1, undefined, undefined, t)
+      Core.Styles.getSpace(undefined, undefined, t)
     ],
     tl: {
       hd: [
         "paddingBottom",
-        Curry._3(arg$2, undefined, undefined, b)
+        Core.Styles.getSpace(undefined, undefined, b)
       ],
       tl: {
         hd: [
           "paddingRight",
-          Curry._3(arg$3, undefined, undefined, r)
+          Core.Styles.getSpace(undefined, undefined, r)
         ],
         tl: /* [] */0
       }
@@ -578,42 +566,35 @@ function padding4(l_, t, r, b) {
 
 function padding(v) {
   return op("padding", (function (s) {
-                var arg = Core.Styles.getSpace;
-                return Curry._3(arg, undefined, undefined, s);
+                return Core.Styles.getSpace(undefined, undefined, s);
               }), v);
 }
 
 function paddingTop(v) {
-  var arg = Core.Styles.getSpace;
-  return o("paddingTop", Curry._3(arg, undefined, undefined, v));
+  return o("paddingTop", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function paddingBottom(v) {
-  var arg = Core.Styles.getSpace;
-  return o("paddingBottom", Curry._3(arg, undefined, undefined, v));
+  return o("paddingBottom", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function paddingLeft(v) {
-  var arg = Core.Styles.getSpace;
-  return o("paddingLeft", Curry._3(arg, undefined, undefined, v));
+  return o("paddingLeft", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function paddingRight(v) {
-  var arg = Core.Styles.getSpace;
-  return o("paddingRight", Curry._3(arg, undefined, undefined, v));
+  return o("paddingRight", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function margin2(v, h) {
-  var arg = Core.Styles.getSpace;
-  var arg$1 = Core.Styles.getSpace;
   var v_0 = [
     "marginVertical",
-    Curry._3(arg, undefined, undefined, v)
+    Core.Styles.getSpace(undefined, undefined, v)
   ];
   var v_1 = {
     hd: [
       "marginHorizontal",
-      Curry._3(arg$1, undefined, undefined, h)
+      Core.Styles.getSpace(undefined, undefined, h)
     ],
     tl: /* [] */0
   };
@@ -625,28 +606,24 @@ function margin2(v, h) {
 }
 
 function margin4(l_, t, r, b) {
-  var arg = Core.Styles.getSpace;
-  var arg$1 = Core.Styles.getSpace;
-  var arg$2 = Core.Styles.getSpace;
-  var arg$3 = Core.Styles.getSpace;
   var v_0 = [
     "marginLeft",
-    Curry._3(arg, undefined, undefined, l_)
+    Core.Styles.getSpace(undefined, undefined, l_)
   ];
   var v_1 = {
     hd: [
       "marginTop",
-      Curry._3(arg$1, undefined, undefined, t)
+      Core.Styles.getSpace(undefined, undefined, t)
     ],
     tl: {
       hd: [
         "marginBottom",
-        Curry._3(arg$2, undefined, undefined, b)
+        Core.Styles.getSpace(undefined, undefined, b)
       ],
       tl: {
         hd: [
           "marginRight",
-          Curry._3(arg$3, undefined, undefined, r)
+          Core.Styles.getSpace(undefined, undefined, r)
         ],
         tl: /* [] */0
       }
@@ -661,41 +638,39 @@ function margin4(l_, t, r, b) {
 
 function margin(v) {
   return op("margin", (function (s) {
-                var arg = Core.Styles.getSpace;
-                return Curry._3(arg, undefined, undefined, s);
+                return Core.Styles.getSpace(undefined, undefined, s);
               }), v);
 }
 
 function marginTop(v) {
-  var arg = Core.Styles.getSpace;
-  return o("marginTop", Curry._3(arg, undefined, undefined, v));
+  return o("marginTop", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function marginBottom(v) {
-  var arg = Core.Styles.getSpace;
-  return o("marginBottom", Curry._3(arg, undefined, undefined, v));
+  return o("marginBottom", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function marginLeft(v) {
-  var arg = Core.Styles.getSpace;
-  return o("marginLeft", Curry._3(arg, undefined, undefined, v));
+  return o("marginLeft", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function marginRight(v) {
-  var arg = Core.Styles.getSpace;
-  return o("marginRight", Curry._3(arg, undefined, undefined, v));
+  return o("marginRight", Core.Styles.getSpace(undefined, undefined, v));
 }
 
 function backgroundColor(v) {
-  return o("backgroundColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("backgroundColor", string_of_color(undefined, undefined, v$1));
 }
 
 function overlayColor(v) {
-  return o("overlayColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("overlayColor", string_of_color(undefined, undefined, v$1));
 }
 
 function tintColor(v) {
-  return o("tintColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
+  var v$1 = Core.Styles.getColor(undefined, undefined, v);
+  return o("tintColor", string_of_color(undefined, undefined, v$1));
 }
 
 function borderRadius(v) {
@@ -703,7 +678,8 @@ function borderRadius(v) {
 }
 
 function color(highlight, param, v) {
-  var res = o("color", string_of_color(undefined, undefined, Core.Styles.getTextColor(highlight, v)));
+  var v$1 = Core.Styles.getTextColor(highlight, v);
+  var res = o("color", string_of_color(undefined, undefined, v$1));
   console.log("res", res);
   return res;
 }
