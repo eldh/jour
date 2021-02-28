@@ -61,7 +61,7 @@ module Values = {
     switch x {
     | #px(v) => v->int_cast
     | #n(v: int) => Core.Styles.getSpace(#number(v))->size_cast // Dangerous?
-    | #pct(v) => v->string_of_int ++ "%"
+    | #pct(v) => v->string_of_float ++ "%"
     | #auto => "auto"
     }
 
@@ -150,17 +150,15 @@ let includeFontPadding = v => o("includeFontPadding", v |> Values.bool)
 let letterSpacing = v => o("letterSpacing", v |> Values.dp)
 let lineHeight = v => o("lineHeight", v |> Values.dp)
 let textShadowRadius = v => o("textShadowRadius", v |> Values.dp)
-let textDecorationColor = v =>
-  o("textDecorationColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let textShadowColor = v => o("textShadowColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderBottomColor = v =>
-  o("borderBottomColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderColor = v => o("borderColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderEndColor = v => o("borderEndColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderLeftColor = v => o("borderLeftColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderRightColor = v => o("borderRightColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderStartColor = v => o("borderStartColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
-let borderTopColor = v => o("borderTopColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
+let textDecorationColor = v => o("textDecorationColor", v->getColor->Values.color)
+let textShadowColor = v => o("textShadowColor", v->getColor->Values.color)
+let borderBottomColor = v => o("borderBottomColor", v->getColor->Values.color)
+let borderColor = v => o("borderColor", v->getColor->Values.color)
+let borderEndColor = v => o("borderEndColor", v->getColor->Values.color)
+let borderLeftColor = v => o("borderLeftColor", v->getColor->Values.color)
+let borderRightColor = v => o("borderRightColor", v->getColor->Values.color)
+let borderStartColor = v => o("borderStartColor", v->getColor->Values.color)
+let borderTopColor = v => o("borderTopColor", v->getColor->Values.color)
 let borderStyle = v =>
   o(
     "borderStyle",
@@ -170,7 +168,7 @@ let borderStyle = v =>
     | #dashed => "dashed"
     },
   )
-let shadowColor = v => o("shadowColor", v |> (v => getColor(v)) |> (v => Values.color(v)))
+let shadowColor = v => o("shadowColor", v->getColor->Values.color)
 let shadowOpacity = v => o("shadowOpacity", v |> Values.float_cast)
 let shadowRadius = v => o("shadowRadius", v |> Values.dp)
 let borderBottomEndRadius = v => o("borderBottomEndRadius", v |> Values.dp)
@@ -289,12 +287,12 @@ let minHeight = v => o("minHeight", v |> Values.size)
 let minWidth = v => o("minWidth", v |> Values.size)
 let maxHeight = v => o("maxHeight", v |> Values.size)
 let maxWidth = v => o("maxWidth", v |> Values.size)
-let top = v => o("top", v |> (v => getSpace(v)) |> Values.space)
-let left = v => o("left", v |> (v => getSpace(v)) |> Values.space)
-let bottom = v => o("bottom", v |> (v => getSpace(v)) |> Values.space)
-let right = v => o("right", v |> (v => getSpace(v)) |> Values.space)
-let start = v => o("start", v |> (v => getSpace(v)) |> Values.space)
-let end_ = v => o("end", v |> (v => getSpace(v)) |> Values.space)
+let top = v => o("top", v->getSpace->Values.space)
+let left = v => o("left", v->getSpace->Values.space)
+let bottom = v => o("bottom", v->getSpace->Values.space)
+let right = v => o("right", v->getSpace->Values.space)
+let start = v => o("start", v->getSpace->Values.space)
+let end_ = v => o("end", v->getSpace->Values.space)
 let overflow = v =>
   o(
     "overflow",
@@ -314,45 +312,44 @@ let position = v =>
   )
 let padding2 = (v, h) =>
   l(list{
-    ("paddingHorizontal", h |> (v => getSpace(v)) |> Values.space),
-    ("paddingVertical", v |> (v => getSpace(v)) |> Values.space),
+    ("paddingHorizontal", h->getSpace->Values.space),
+    ("paddingVertical", v->getSpace->Values.space),
   })
 let padding4 = (l_, t, r, b) =>
   l(list{
-    ("paddingLeft", l_ |> (v => getSpace(v)) |> Values.space),
-    ("paddingTop", t |> (v => getSpace(v)) |> Values.space),
-    ("paddingBottom", b |> (v => getSpace(v)) |> Values.space),
-    ("paddingRight", r |> (v => getSpace(v)) |> Values.space),
+    ("paddingLeft", l_->getSpace->Values.space),
+    ("paddingTop", t->getSpace->Values.space),
+    ("paddingBottom", b->getSpace->Values.space),
+    ("paddingRight", r->getSpace->Values.space),
   })
-let padding = v => op("padding", s => s |> (v => getSpace(v)) |> Values.space, v)
-let paddingTop = v => o("paddingTop", v |> (v => getSpace(v)) |> Values.space)
-let paddingBottom = v => o("paddingBottom", v |> (v => getSpace(v)) |> Values.space)
-let paddingLeft = v => o("paddingLeft", v |> (v => getSpace(v)) |> Values.space)
-let paddingRight = v => o("paddingRight", v |> (v => getSpace(v)) |> Values.space)
+let padding = v => op("padding", s => s->getSpace->Values.space, v)
+let paddingTop = v => op("paddingTop", s => s->getSpace->Values.space, v)
+let paddingBottom = v => op("paddingBottom", s => s->getSpace->Values.space, v)
+let paddingLeft = v => op("paddingLeft", s => s->getSpace->Values.space, v)
+let paddingRight = v => op("paddingRight", s => s->getSpace->Values.space, v)
 let margin2 = (v, h) =>
   l(list{
-    ("marginVertical", v |> (v => getSpace(v)) |> Values.space),
-    ("marginHorizontal", h |> (v => getSpace(v)) |> Values.space),
+    ("marginVertical", v->getSpace->Values.space),
+    ("marginHorizontal", h->getSpace->Values.space),
   })
 let margin4 = (l_, t, r, b) =>
   l(list{
-    ("marginLeft", l_ |> (v => getSpace(v)) |> Values.space),
-    ("marginTop", t |> (v => getSpace(v)) |> Values.space),
-    ("marginBottom", b |> (v => getSpace(v)) |> Values.space),
-    ("marginRight", r |> (v => getSpace(v)) |> Values.space),
+    ("marginLeft", l_->getSpace->Values.space),
+    ("marginTop", t->getSpace->Values.space),
+    ("marginBottom", b->getSpace->Values.space),
+    ("marginRight", r->getSpace->Values.space),
   })
-let margin = v => op("margin", s => s |> (v => getSpace(v)) |> Values.space, v)
-let marginTop = v => o("marginTop", v |> (v => getSpace(v)) |> Values.space)
-let marginBottom = v => o("marginBottom", v |> (v => getSpace(v)) |> Values.space)
-let marginLeft = v => o("marginLeft", v |> (v => getSpace(v)) |> Values.space)
-let marginRight = v => o("marginRight", v |> (v => getSpace(v)) |> Values.space)
-let backgroundColor = v => o("backgroundColor", getColor(v) |> (v => Values.color(v)))
-let overlayColor = v => o("overlayColor", getColor(v) |> (v => Values.color(v)))
-let tintColor = v => o("tintColor", getColor(v) |> (v => Values.color(v)))
+let margin = v => op("margin", s => s->getSpace->Values.space, v)
+let marginTop = v => op("marginTop", s => s->getSpace->Values.space, v)
+let marginBottom = v => op("marginBottom", s => s->getSpace->Values.space, v)
+let marginLeft = v => op("marginLeft", s => s->getSpace->Values.space, v)
+let marginRight = v => op("marginRight", s => s->getSpace->Values.space, v)
+let backgroundColor = v => o("backgroundColor", getColor(v)->Values.color)
+let overlayColor = v => o("overlayColor", getColor(v)->Values.color)
+let tintColor = v => o("tintColor", getColor(v)->Values.color)
 let borderRadius = v => o("borderRadius", v |> getBorderRadius |> Values.int_cast)
 let color = (~highlight=?, ~tint as _=?, v) => {
-  let res = o("color", v |> getTextColor(~highlight?) |> (v => Values.color(v)))
-  Js.log2("res", res)
+  let res = o("color", v->getTextColor(~highlight?)->Values.color)
   res
 }
 

@@ -4,7 +4,7 @@ import * as S from "./revy/S.bs.js";
 import * as Lab from "./revy/Lab.bs.js";
 import * as Core from "./revy/Core.bs.js";
 import * as React from "react";
-import * as Editor from "./Editor.bs.js";
+import * as Calendar from "./Calendar.bs.js";
 import * as ReactNative from "react-native";
 
 Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
@@ -168,9 +168,17 @@ Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
           quiet: Lab.fromRGB({
                 NAME: "rgb",
                 VAL: [
-                  115,
-                  115,
-                  115
+                  117,
+                  117,
+                  117
+                ]
+              }),
+          faint: Lab.fromRGB({
+                NAME: "rgb",
+                VAL: [
+                  60,
+                  60,
+                  60
                 ]
               })
         }, 700, undefined));
@@ -198,7 +206,7 @@ var style = S.make({
 function App(Props) {
   return React.createElement(ReactNative.View, {
               style: style,
-              children: React.createElement(Editor.make, {})
+              children: React.createElement(Calendar.make, {})
             });
 }
 

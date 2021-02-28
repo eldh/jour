@@ -5,44 +5,68 @@ import * as Core from "./Core.bs.js";
 import * as View from "./View.bs.js";
 import * as React from "react";
 
-function getBoxStyle(position_, align_, alignSelf_, alignContent_, backgroundColor_, grow_, basis_, wrap_, shrink_, justify_, direction_, padding_, margin_, height_, width_, maxWidth_, overflow_, borderRadius_, param) {
+function getBoxStyle(position_, align_, alignSelf_, alignContent_, backgroundColor_, grow_, basis_, wrap_, shrink_, justify_, direction_, padding_, margin_, marginBottom_, marginTop_, marginLeft_, marginRight_, paddingBottom_, paddingTop_, paddingLeft_, paddingRight_, height_, width_, maxWidth_, overflow_, borderRadius_, param) {
   return S.make({
               hd: S.width(width_),
               tl: {
                 hd: S.maxWidth(maxWidth_),
                 tl: {
-                  hd: S.padding(padding_),
+                  hd: S.position(position_),
                   tl: {
-                    hd: S.margin(margin_),
+                    hd: S.padding(padding_),
                     tl: {
-                      hd: S.position(position_),
+                      hd: S.margin(margin_),
                       tl: {
-                        hd: S.alignSelf(alignSelf_),
+                        hd: S.marginBottom(marginBottom_),
                         tl: {
-                          hd: S.alignItems(align_),
+                          hd: S.marginTop(marginTop_),
                           tl: {
-                            hd: S.backgroundColor(backgroundColor_),
+                            hd: S.marginLeft(marginLeft_),
                             tl: {
-                              hd: S.alignContent(alignContent_),
+                              hd: S.marginRight(marginRight_),
                               tl: {
-                                hd: S.height(height_),
+                                hd: S.paddingBottom(paddingBottom_),
                                 tl: {
-                                  hd: S.overflow(overflow_),
+                                  hd: S.paddingTop(paddingTop_),
                                   tl: {
-                                    hd: S.borderRadius(borderRadius_),
+                                    hd: S.paddingLeft(paddingLeft_),
                                     tl: {
-                                      hd: S.flexShrink(shrink_),
+                                      hd: S.paddingRight(paddingRight_),
                                       tl: {
-                                        hd: S.flexBasis(basis_),
+                                        hd: S.alignSelf(alignSelf_),
                                         tl: {
-                                          hd: S.flexDirection(direction_),
+                                          hd: S.alignItems(align_),
                                           tl: {
-                                            hd: S.flexGrow(grow_),
+                                            hd: S.backgroundColor(backgroundColor_),
                                             tl: {
-                                              hd: S.flexWrap(wrap_),
+                                              hd: S.alignContent(alignContent_),
                                               tl: {
-                                                hd: S.justifyContent(justify_),
-                                                tl: /* [] */0
+                                                hd: S.height(height_),
+                                                tl: {
+                                                  hd: S.overflow(overflow_),
+                                                  tl: {
+                                                    hd: S.borderRadius(borderRadius_),
+                                                    tl: {
+                                                      hd: S.flexShrink(shrink_),
+                                                      tl: {
+                                                        hd: S.flexBasis(basis_),
+                                                        tl: {
+                                                          hd: S.flexDirection(direction_),
+                                                          tl: {
+                                                            hd: S.flexGrow(grow_),
+                                                            tl: {
+                                                              hd: S.flexWrap(wrap_),
+                                                              tl: {
+                                                                hd: S.justifyContent(justify_),
+                                                                tl: /* [] */0
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
                                               }
                                             }
                                           }
@@ -77,6 +101,14 @@ function Box(Props) {
   var directionOpt = Props.direction;
   var padding = Props.padding;
   var margin = Props.margin;
+  var marginBottom = Props.marginBottom;
+  var marginTop = Props.marginTop;
+  var marginLeft = Props.marginLeft;
+  var marginRight = Props.marginRight;
+  var paddingBottom = Props.paddingBottom;
+  var paddingTop = Props.paddingTop;
+  var paddingLeft = Props.paddingLeft;
+  var paddingRight = Props.paddingRight;
   var heightOpt = Props.height;
   var widthOpt = Props.width;
   var maxWidthOpt = Props.maxWidth;
@@ -99,7 +131,7 @@ function Box(Props) {
   var maxWidth = maxWidthOpt !== undefined ? maxWidthOpt : "auto";
   var overflow = overflowOpt !== undefined ? overflowOpt : "scroll";
   var borderRadius = borderRadiusOpt !== undefined ? borderRadiusOpt : "none";
-  var style = getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, height, width, maxWidth, overflow, borderRadius, undefined);
+  var style = getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
   return React.createElement(Core.BackgroundColorContext.Provider.make, {
               value: backgroundColor,
               children: React.createElement(View.make, {

@@ -219,48 +219,39 @@ function textShadowRadius(v) {
 }
 
 function textDecorationColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("textDecorationColor", string_of_color(undefined, undefined, v$1));
+  return o("textDecorationColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function textShadowColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("textShadowColor", string_of_color(undefined, undefined, v$1));
+  return o("textShadowColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderBottomColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderBottomColor", string_of_color(undefined, undefined, v$1));
+  return o("borderBottomColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderColor", string_of_color(undefined, undefined, v$1));
+  return o("borderColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderEndColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderEndColor", string_of_color(undefined, undefined, v$1));
+  return o("borderEndColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderLeftColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderLeftColor", string_of_color(undefined, undefined, v$1));
+  return o("borderLeftColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderRightColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderRightColor", string_of_color(undefined, undefined, v$1));
+  return o("borderRightColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderStartColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderStartColor", string_of_color(undefined, undefined, v$1));
+  return o("borderStartColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderTopColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("borderTopColor", string_of_color(undefined, undefined, v$1));
+  return o("borderTopColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderStyle(v) {
@@ -270,8 +261,7 @@ function borderStyle(v) {
 }
 
 function shadowColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("shadowColor", string_of_color(undefined, undefined, v$1));
+  return o("shadowColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function shadowOpacity(v) {
@@ -571,19 +561,27 @@ function padding(v) {
 }
 
 function paddingTop(v) {
-  return o("paddingTop", Core.Styles.getSpace(undefined, undefined, v));
+  return op("paddingTop", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function paddingBottom(v) {
-  return o("paddingBottom", Core.Styles.getSpace(undefined, undefined, v));
+  return op("paddingBottom", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function paddingLeft(v) {
-  return o("paddingLeft", Core.Styles.getSpace(undefined, undefined, v));
+  return op("paddingLeft", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function paddingRight(v) {
-  return o("paddingRight", Core.Styles.getSpace(undefined, undefined, v));
+  return op("paddingRight", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function margin2(v, h) {
@@ -643,34 +641,39 @@ function margin(v) {
 }
 
 function marginTop(v) {
-  return o("marginTop", Core.Styles.getSpace(undefined, undefined, v));
+  return op("marginTop", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function marginBottom(v) {
-  return o("marginBottom", Core.Styles.getSpace(undefined, undefined, v));
+  return op("marginBottom", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function marginLeft(v) {
-  return o("marginLeft", Core.Styles.getSpace(undefined, undefined, v));
+  return op("marginLeft", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function marginRight(v) {
-  return o("marginRight", Core.Styles.getSpace(undefined, undefined, v));
+  return op("marginRight", (function (s) {
+                return Core.Styles.getSpace(undefined, undefined, s);
+              }), v);
 }
 
 function backgroundColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("backgroundColor", string_of_color(undefined, undefined, v$1));
+  return o("backgroundColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function overlayColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("overlayColor", string_of_color(undefined, undefined, v$1));
+  return o("overlayColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function tintColor(v) {
-  var v$1 = Core.Styles.getColor(undefined, undefined, v);
-  return o("tintColor", string_of_color(undefined, undefined, v$1));
+  return o("tintColor", string_of_color(undefined, undefined, Core.Styles.getColor(undefined, undefined, v)));
 }
 
 function borderRadius(v) {
@@ -678,10 +681,7 @@ function borderRadius(v) {
 }
 
 function color(highlight, param, v) {
-  var v$1 = Core.Styles.getTextColor(highlight, v);
-  var res = o("color", string_of_color(undefined, undefined, v$1));
-  console.log("res", res);
-  return res;
+  return o("color", string_of_color(undefined, undefined, Core.Styles.getTextColor(highlight, v)));
 }
 
 function make(styleList) {

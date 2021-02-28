@@ -154,6 +154,7 @@ module Color = {
     | #brand2
     | #body
     | #quiet
+    | #faint
     | #highlight(int, textColor)
     | #match_(backgroundColor)
     | #unsafeCustomColor(Lab.t)
@@ -217,6 +218,7 @@ type colors = {
   bodyUp3: Lab.t,
   bodyText: Lab.t,
   quiet: Lab.t,
+  faint: Lab.t,
 }
 
 type t = {
@@ -299,6 +301,7 @@ module Private = {
     switch v {
     | #primary => theme.colors.primary
     | #quiet => theme.colors.quiet
+    | #faint => theme.colors.faint
     | #unsafeCustomColor(c) => c
     | #secondary
     | #warning
@@ -430,6 +433,7 @@ let createTheme = (
     bodyText: #lab(10., 0., 0., 1.),
     neutral: #rgb(40, 40, 40) |> Lab.fromRGB,
     quiet: #rgb(130, 130, 130) |> Lab.fromRGB,
+    faint: #rgb(70, 70, 70) |> Lab.fromRGB,
   },
   ~gridWidth as width=960,
   (),
@@ -453,6 +457,7 @@ let createTheme = (
       bodyUp3: hues.bodyUp3,
       bodyText: hues.bodyText,
       quiet: hues.quiet,
+      faint: hues.faint,
       neutral: hues.neutral |> lightness(80.),
     }
   }

@@ -58,46 +58,18 @@ let useDiaryText = date => {
   (value, v => setValue(_ => v))
 }
 
-let useDiaryList = () =>
-  Hooks.useInterval(
-    5000,
-    () =>
-      DiaryFs.getDiaryEntries()->Promise.get(res =>
-        switch res {
-        | Ok(entries) =>
-          open DiaryList
-          entries
-          ->Belt.List.keepMap(((name, date)) => {
-            let entry = makeEntry(name, date)
-            switch get(entry.id) {
-            | Some(_e) => None
-            | None => Some(Append(entry))
-            }
-          })
-          ->apply
-          ->(_ => Js.log2("Got diary list: ", entries))
-          ->ignore
-        | Error(e) => Js.log2("Error fetching diary list: ", e)
-        }
-      ),
-    [],
-  )
-
 @react.component
 let make = () => {
   let (date, handleChangeDate) = useDiaryDate()
   let (value, setValue) = useDiaryText(date)
-  useDiaryList()
-  // let v = DiaryList.use()
-  // Js.log2("DiaryList", v->Belt.List.toArray)
 
   <ReactNative.View
     style={
       open S
       list{flexGrow(1.)} |> S.make
     }>
-    <Box align=#center padding=#half alignContent=#center grow=1. height=#pct(100)>
-      <Box maxWidth=#pct(100) width=#px(600) grow=1.>
+    <Box align=#center padding=#half alignContent=#center grow=1. height=#pct(100.)>
+      <Box maxWidth=#pct(100.) width=#px(600) grow=1.>
         {handleChangeDate->Belt.Option.mapWithDefault(React.null, cb =>
           <Box grow=0.>
             <Button
@@ -118,12 +90,12 @@ let make = () => {
         <ReactNative.ScrollView
           style={
             open S
-            list{width(#pct(100)), flexGrow(1.), backgroundColor(#primary)} |> S.make
+            list{width(#pct(100.)), flexGrow(1.), backgroundColor(#primary)} |> S.make
           }
           contentContainerStyle={
             open S
             list{
-              width(#pct(100)),
+              width(#pct(100.)),
               alignContent(#stretch),
               justifyContent(#center),
               alignItems(#stretch),

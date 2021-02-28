@@ -30,7 +30,8 @@
         bodyDown3: #lab(0., 0., 0., 1.),
         bodyText: #lab(80., 0., 0., 1.),
         neutral: #rgb(40, 40, 40) |> Lab.fromRGB,
-        quiet: #rgb(115, 115, 115) |> Lab.fromRGB,
+        quiet: #rgb(117, 117, 117) |> Lab.fromRGB,
+        faint: #rgb(60, 60, 60) |> Lab.fromRGB,
       },
       ~gridWidth=700,
       (),
@@ -39,9 +40,9 @@
 }
 let style = {
   open S
-  list{backgroundColor(#body), width(#pct(100)), flex(1.), flexGrow(1.), padding(Some(#double))}
+  list{backgroundColor(#body), width(#pct(100.)), flex(1.), flexGrow(1.), padding(Some(#double))}
 }->S.make
 @react.component
 let make = () => {
-  <ReactNative.View style> <Editor /> </ReactNative.View>
+  <ReactNative.View style> <Calendar /> </ReactNative.View>
 }

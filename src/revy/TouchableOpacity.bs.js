@@ -23,6 +23,14 @@ function TouchableOpacity(Props) {
   var $staropt$star$11 = Props.onlyFocusOnTab;
   var padding = Props.padding;
   var margin = Props.margin;
+  var marginBottom = Props.marginBottom;
+  var marginTop = Props.marginTop;
+  var marginLeft = Props.marginLeft;
+  var marginRight = Props.marginRight;
+  var paddingBottom = Props.paddingBottom;
+  var paddingTop = Props.paddingTop;
+  var paddingLeft = Props.paddingLeft;
+  var paddingRight = Props.paddingRight;
   var $staropt$star$12 = Props.basis;
   var $staropt$star$13 = Props.height;
   var $staropt$star$14 = Props.width;
@@ -51,7 +59,7 @@ function TouchableOpacity(Props) {
   var maxWidth = $staropt$star$15 !== undefined ? $staropt$star$15 : "auto";
   var overflow = $staropt$star$16 !== undefined ? $staropt$star$16 : "scroll";
   var borderRadius = $staropt$star$17 !== undefined ? $staropt$star$17 : "none";
-  var style = Box.getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, height, width, maxWidth, overflow, borderRadius, undefined);
+  var style = Box.getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
   var tmp = {
     children: React.createElement(View.make, {
           style: style,

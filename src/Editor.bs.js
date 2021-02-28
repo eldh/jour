@@ -14,8 +14,6 @@ import * as DiaryFs from "./DiaryFs.bs.js";
 import * as $$Promise from "reason-promise/src/js/promise.bs.js";
 import * as TextArea from "./revy/TextArea.bs.js";
 import * as DateFns$1 from "date-fns";
-import * as Belt_List from "bs-platform/lib/es6/belt_List.mjs";
-import * as DiaryList from "./DiaryList.bs.js";
 import * as Belt_Option from "bs-platform/lib/es6/belt_Option.mjs";
 import * as ReactNative from "react-native";
 
@@ -109,38 +107,11 @@ function useDiaryText(date) {
         ];
 }
 
-function useDiaryList(param) {
-  return Hooks.useInterval(5000, (function (param) {
-                return $$Promise.get(DiaryFs.getDiaryEntries(undefined), (function (res) {
-                              if (res.TAG === /* Ok */0) {
-                                var entries = res._0;
-                                Curry._1(DiaryList.apply, Belt_List.keepMap(entries, (function (param) {
-                                            var entry = DiaryList.makeEntry(param[0], param[1]);
-                                            var _e = Curry._1(DiaryList.get, entry.id);
-                                            if (_e !== undefined) {
-                                              return ;
-                                            } else {
-                                              return {
-                                                      TAG: /* Append */0,
-                                                      _0: entry
-                                                    };
-                                            }
-                                          })));
-                                console.log("Got diary list: ", entries);
-                                return ;
-                              }
-                              console.log("Error fetching diary list: ", res._0);
-                              
-                            }));
-              }), []);
-}
-
 function Editor(Props) {
   var match = useDiaryDate(undefined);
   var date = match[0];
   var match$1 = useDiaryText(date);
   var setValue = match$1[1];
-  useDiaryList(undefined);
   return React.createElement(ReactNative.View, {
               style: S.make({
                     hd: S.flexGrow(1),
@@ -239,7 +210,6 @@ export {
   initialState ,
   useDiaryDate ,
   useDiaryText ,
-  useDiaryList ,
   make ,
   
 }

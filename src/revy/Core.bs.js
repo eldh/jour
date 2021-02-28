@@ -156,7 +156,9 @@ function textColor(theme, alpha, highlight, v) {
           )(Curry._1(highlightFn, typeof v === "string" ? (
                     v === "success" || v === "brand2" || v === "brand1" || v === "warning" || v === "error" || v === "secondary" || v === "body" ? theme.colors.bodyText : (
                         v === "quiet" ? theme.colors.quiet : (
-                            v === "primary" ? theme.colors.primary : theme.colors.bodyText
+                            v === "faint" ? theme.colors.faint : (
+                                v === "primary" ? theme.colors.primary : theme.colors.bodyText
+                              )
                           )
                       )
                   ) : (
@@ -476,6 +478,14 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
                 130,
                 130
               ]
+            }),
+        faint: Lab.fromRGB({
+              NAME: "rgb",
+              VAL: [
+                70,
+                70,
+                70
+              ]
             })
       });
   var width = widthOpt !== undefined ? widthOpt : 960;
@@ -496,6 +506,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
   var colors_bodyUp3 = hues.bodyUp3;
   var colors_bodyText = hues.bodyText;
   var colors_quiet = hues.quiet;
+  var colors_faint = hues.faint;
   var colors = {
     neutral: colors_neutral,
     primary: colors_primary,
@@ -513,7 +524,8 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
     bodyUp2: colors_bodyUp2,
     bodyUp3: colors_bodyUp3,
     bodyText: colors_bodyText,
-    quiet: colors_quiet
+    quiet: colors_quiet,
+    faint: colors_faint
   };
   return {
           colors: colors,

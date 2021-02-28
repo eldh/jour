@@ -1,6 +1,6 @@
 // open ReactNative;
 
-@bs.module("./StackMap")
+@module("./StackMap")
 external childMap: ((React.element, bool) => React.element, React.element) => React.element =
   "stackMap"
 
@@ -23,7 +23,7 @@ module Styles = {
     | #column => list{marginBottom(margin)}
     | #row => list{flexDirection(#row), marginRight(margin)}
     }
-    |> List.append(list{flexShrink(0.), flexGrow(0.), flexBasis(#pct(100))})
+    |> List.append(list{flexShrink(0.), flexGrow(0.), flexBasis(#pct(100.))})
     |> S.make
 }
 
@@ -38,7 +38,7 @@ let make = (~margin as m=#double, ~direction=#column, ~align=#center, ~children)
             <ReactNative.View
               style={
                 open S
-                list{paddingLeft(m), alignSelf(#stretch)} |> S.make
+                list{paddingLeft(Some(m)), alignSelf(#stretch)} |> S.make
               }>
               React.null
             </ReactNative.View>
