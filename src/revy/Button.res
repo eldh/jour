@@ -54,7 +54,6 @@ let make = (
   ~children,
 ) => {
   let (textStyle, btnStyle) = Styles.make(~variant, ~outline, ~size)
-  Js.log2("textStyle", textStyle)
 
   <TouchableOpacity onPress style=btnStyle activeOpacity=0.8 disabled>
     <ReactNative.Text style=textStyle> {children->React.string} </ReactNative.Text>

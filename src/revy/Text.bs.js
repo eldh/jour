@@ -8,7 +8,7 @@ import * as UnsafeCreateReactElement from "./UnsafeCreateReactElement.bs.js";
 
 var InvalidValue = /* @__PURE__ */Caml_exceptions.create("Text.InvalidValue");
 
-function getTextStyles(extraStyleOpt, size, color_, quietOpt, tint, fontFamily_Opt, _textDecoration_Opt, lineHeight_, weight_, param) {
+function getTextStyles(extraStyleOpt, size, color_, quietOpt, tint, fontFamily_Opt, _textDecoration_Opt, lineHeight_, letterSpacing_, weight_, param) {
   var extraStyle = extraStyleOpt !== undefined ? extraStyleOpt : /* [] */0;
   var quiet = quietOpt !== undefined ? quietOpt : false;
   var fontFamily_ = fontFamily_Opt !== undefined ? fontFamily_Opt : "body";
@@ -17,12 +17,15 @@ function getTextStyles(extraStyleOpt, size, color_, quietOpt, tint, fontFamily_O
               tl: {
                 hd: S.fontFamily(fontFamily_),
                 tl: {
-                  hd: S.lineHeight(Core.Styles.getLineHeight(size, lineHeight_, undefined)),
+                  hd: S.letterSpacing(letterSpacing_),
                   tl: {
-                    hd: S.fontSize(size),
+                    hd: S.lineHeight(Core.Styles.getLineHeight(size, lineHeight_, undefined)),
                     tl: {
-                      hd: S.fontWeight(weight_),
-                      tl: extraStyle
+                      hd: S.fontSize(size),
+                      tl: {
+                        hd: S.fontWeight(weight_),
+                        tl: extraStyle
+                      }
                     }
                   }
                 }
@@ -35,6 +38,7 @@ function $$Text(Props) {
   var colorOpt = Props.color;
   var sizeOpt = Props.size;
   var lineHeightOpt = Props.lineHeight;
+  var letterSpacingOpt = Props.letterSpacing;
   var textDecoration = Props.textDecoration;
   var fontFamily = Props.fontFamily;
   var quietOpt = Props.quiet;
@@ -45,8 +49,9 @@ function $$Text(Props) {
   var color = colorOpt !== undefined ? colorOpt : "body";
   var size = sizeOpt !== undefined ? sizeOpt : 0;
   var lineHeight = lineHeightOpt !== undefined ? lineHeightOpt : 0;
+  var letterSpacing = letterSpacingOpt !== undefined ? letterSpacingOpt : 0;
   var quiet = quietOpt !== undefined ? quietOpt : false;
-  var styles = getTextStyles(style, size, color, quiet, tintColor, fontFamily, textDecoration, lineHeight, weight, undefined);
+  var styles = getTextStyles(style, size, color, quiet, tintColor, fontFamily, textDecoration, lineHeight, letterSpacing, weight, undefined);
   return UnsafeCreateReactElement.create(ReactNative.Text, {
               style: styles,
               children: children
@@ -60,6 +65,7 @@ function Text$String(Props) {
   var quietOpt = Props.quiet;
   var style = Props.style;
   var lineHeightOpt = Props.lineHeight;
+  var letterSpacingOpt = Props.letterSpacing;
   var textDecoration = Props.textDecoration;
   var colorOpt = Props.color;
   var tintColor = Props.tintColor;
@@ -69,8 +75,9 @@ function Text$String(Props) {
   var size = sizeOpt !== undefined ? sizeOpt : 0;
   var quiet = quietOpt !== undefined ? quietOpt : false;
   var lineHeight = lineHeightOpt !== undefined ? lineHeightOpt : 0;
+  var letterSpacing = letterSpacingOpt !== undefined ? letterSpacingOpt : 0;
   var color = colorOpt !== undefined ? colorOpt : "body";
-  var styles = getTextStyles(style, size, color, quiet, tintColor, undefined, textDecoration, lineHeight, weight, undefined);
+  var styles = getTextStyles(style, size, color, quiet, tintColor, undefined, textDecoration, lineHeight, letterSpacing, weight, undefined);
   return UnsafeCreateReactElement.create(tag, {
               style: styles,
               children: children
@@ -88,6 +95,7 @@ function Text$Block(Props) {
   var quietOpt = Props.quiet;
   var style = Props.style;
   var lineHeightOpt = Props.lineHeight;
+  var letterSpacingOpt = Props.letterSpacing;
   var textDecoration = Props.textDecoration;
   var fontFamily = Props.fontFamily;
   var colorOpt = Props.color;
@@ -98,8 +106,9 @@ function Text$Block(Props) {
   var size = sizeOpt !== undefined ? sizeOpt : 0;
   var quiet = quietOpt !== undefined ? quietOpt : false;
   var lineHeight = lineHeightOpt !== undefined ? lineHeightOpt : 0;
+  var letterSpacing = letterSpacingOpt !== undefined ? letterSpacingOpt : 0;
   var color = colorOpt !== undefined ? colorOpt : "body";
-  var styles = getTextStyles(style, size, color, quiet, tintColor, fontFamily, textDecoration, lineHeight, weight, undefined);
+  var styles = getTextStyles(style, size, color, quiet, tintColor, fontFamily, textDecoration, lineHeight, letterSpacing, weight, undefined);
   return UnsafeCreateReactElement.create(tag, {
               style: styles,
               children: children

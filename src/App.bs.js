@@ -3,8 +3,16 @@
 import * as S from "./revy/S.bs.js";
 import * as Lab from "./revy/Lab.bs.js";
 import * as Core from "./revy/Core.bs.js";
+import * as Arrow from "./Arrow.bs.js";
+import * as Curry from "bs-platform/lib/es6/curry.mjs";
 import * as React from "react";
+import * as Editor from "./Editor.bs.js";
+import * as Reader from "./Reader.bs.js";
+import * as DateFns from "./DateFns.bs.js";
 import * as Calendar from "./Calendar.bs.js";
+import * as DateFns$1 from "date-fns";
+import * as DiaryHooks from "./DiaryHooks.bs.js";
+import * as CalendarIcon from "./CalendarIcon.bs.js";
 import * as ReactNative from "react-native";
 
 Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
@@ -183,6 +191,43 @@ Core.setTheme(Core.createTheme(1.25, 14, 60, 4, {
               })
         }, 700, undefined));
 
+function App$NavButton(Props) {
+  var onPress = Props.onPress;
+  var children = Props.children;
+  return React.createElement(ReactNative.TouchableOpacity, {
+              activeOpacity: 0.7,
+              focusedOpacity: 0.9,
+              style: S.make({
+                    hd: S.padding("single"),
+                    tl: {
+                      hd: S.position("absolute"),
+                      tl: {
+                        hd: S.left({
+                              NAME: "number",
+                              VAL: 4
+                            }),
+                        tl: {
+                          hd: S.zIndex(10),
+                          tl: {
+                            hd: S.top({
+                                  NAME: "unsafeCustomValue",
+                                  VAL: 24
+                                }),
+                            tl: /* [] */0
+                          }
+                        }
+                      }
+                    }
+                  }),
+              onPress: onPress,
+              children: children
+            });
+}
+
+var NavButton = {
+  make: App$NavButton
+};
+
 var style = S.make({
       hd: S.backgroundColor("body"),
       tl: {
@@ -204,15 +249,51 @@ var style = S.make({
     });
 
 function App(Props) {
+  var match = React.useState(function () {
+        return /* Editor */0;
+      });
+  var setRoute = match[1];
+  var route = match[0];
+  var diaryList = DiaryHooks.useDiaryList(undefined);
   return React.createElement(ReactNative.View, {
               style: style,
-              children: React.createElement(Calendar.make, {})
-            });
+              children: null
+            }, route === 0 ? React.createElement(App$NavButton, {
+                    onPress: (function (param) {
+                        return Curry._1(setRoute, (function (param) {
+                                      return /* Calendar */1;
+                                    }));
+                      }),
+                    children: React.createElement(CalendarIcon.make, {})
+                  }) : React.createElement(App$NavButton, {
+                    onPress: (function (param) {
+                        var route$1 = typeof route === "number" ? /* Editor */0 : /* Calendar */1;
+                        return Curry._1(setRoute, (function (param) {
+                                      return route$1;
+                                    }));
+                      }),
+                    children: React.createElement(Arrow.make, {})
+                  }), typeof route === "number" ? (
+                route !== 0 ? React.createElement(Calendar.make, {
+                        onOpenDate: (function (date) {
+                            var route = DateFns$1.isSameDay(date, DateFns.now(undefined)) ? /* Editor */0 : /* Reader */({
+                                  _0: date
+                                });
+                            return Curry._1(setRoute, (function (param) {
+                                          return route;
+                                        }));
+                          }),
+                        diaryList: diaryList
+                      }) : React.createElement(Editor.make, {})
+              ) : React.createElement(Reader.make, {
+                    date: route._0
+                  }));
 }
 
 var make = App;
 
 export {
+  NavButton ,
   style ,
   make ,
   

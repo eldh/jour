@@ -1,20 +1,5 @@
 @@warning("-27")
 let now = () => Js.Date.fromFloat(Js.Date.now())
-let useDiaryList = () => {
-  let (state, setState) = React.useState(() => None)
-  Hooks.useInterval(
-    5000,
-    () =>
-      DiaryFs.getDiaryEntries()->Promise.get(res =>
-        switch res {
-        | Ok(entries) => setState(_ => Some(entries))
-        | Error(e) => Js.log2("Error fetching diary list: ", e)
-        }
-      ),
-    [],
-  )
-  state
-}
 
 let padMonthStart = date => {
   let startOfMonth = date->DateFns.startOfMonth
@@ -28,18 +13,19 @@ let padMonthEnd = date => {
 }
 
 module Date = {
-  let style = {list{S.width(#px(30))} |> S.make}
+  let style = {
+    open S
+    list{width(#px(28)), alignItems(#center)} |> make
+  }
   @react.component
   let make = (~date, ~isToday, ~isSameMonth, ~isActive, ~onPress, ()) => {
     <ReactNative.TouchableOpacity
       disabled={!isSameMonth || !isActive} activeOpacity={0.7} focusedOpacity={0.9} onPress style>
-      <Box alignContent=#center justify=#center align=#center direction=#column grow=1.>
-        {isSameMonth
-          ? <Text weight=#_700 color={isToday ? #primary : isActive ? #body : #faint}>
-              {date->DateFns.format("d")}
-            </Text>
-          : React.null}
-      </Box>
+      {isSameMonth
+        ? <Text weight=#_700 color={isToday ? #primary : isActive ? #body : #faint}>
+            {date->DateFns.format("d")}
+          </Text>
+        : React.null}
     </ReactNative.TouchableOpacity>
   }
 }
@@ -47,8 +33,8 @@ module Date = {
 module Month = {
   let style =
     list{
-      S.width(#px(30 * 7)),
-      S.height(#px(25 * 6)),
+      S.width(#px(28 * 7)),
+      S.height(#px(28 * 6)),
       S.flexDirection(#row),
       S.flexWrap(#wrap),
     } |> S.make
@@ -60,13 +46,6 @@ module Month = {
     let daysBefore = month->padMonthStart
     let daysAfter = month->padMonthEnd
     let allDays = Tablecloth.Array.concatenate([daysBefore, daysInMonth, daysAfter])
-    // Js.log2("monthStart", monthStart)
-    // Js.log2("activeDates", activeDates)
-    // Js.log2("daysInMonth", daysInMonth)
-    // Js.log2("daysBefore", daysBefore)
-    // Js.log2("daysAfter", daysAfter)
-    // Js.log2("allDays", allDays->Tablecloth.Array.map(~f=d => d->DateFns.format("MM dd")))
-    // Js.log2("monthLength", monthLength)
 
     <Box>
       <Text weight=#bold> {month->DateFns.format("MMMM")->String.capitalize} </Text>
@@ -91,12 +70,12 @@ module Month = {
 module Year = {
   @react.component
   let make = (~year, ~today, ~activeDates, ~onPressDate, ()) => {
-    <Box width=#px(30 * 8 * 3)>
+    <Box width=#px(621) padding=#half>
       <Text weight=#_700 size=4> {year->DateFns.format("yyyy")} </Text>
       <Box
         direction=#row
         wrap=#wrap
-        style={list{S.width(#px(30 * 7 * 3))} |> S.make}
+        style={list{S.width(#px(621))} |> S.make}
         marginBottom=#number(48)>
         {Belt_Array.makeBy(12, i => {
           let month = year->DateFns.addMonths(i)
@@ -108,9 +87,8 @@ module Year = {
 }
 
 @react.component
-let make = () => {
-  let diaryList = useDiaryList()
-  let today = now() //Js.Date.makeWithYMD(~year=2025., ~month=7., ~date=23., ())
+let make = (~onOpenDate, ~diaryList) => {
+  let today = now()
   let firstDate =
     diaryList
     ->Tablecloth.Option.map(~f=d =>
@@ -129,7 +107,9 @@ let make = () => {
     diaryList->Tablecloth.Option.map(~f=d =>
       d->Tablecloth.List.map(~f=((_, date)) => date)->Tablecloth.Array.from_list
     )
-  let onPressDate = date => {Js.log2("clickity", date)}
+  let onPressDate = date => {
+    onOpenDate(date)
+  }
   <ReactNative.ScrollView
     style={
       open S

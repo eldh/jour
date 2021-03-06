@@ -147,15 +147,13 @@ function Button(Props) {
   var size = sizeOpt !== undefined ? sizeOpt : /* Medium */1;
   var outline = outlineOpt !== undefined ? outlineOpt : false;
   var match = make(variant, size, outline);
-  var textStyle = match[0];
-  console.log("textStyle", textStyle);
   return React.createElement(ReactNative.TouchableOpacity, {
               activeOpacity: 0.8,
               style: match[1],
               disabled: disabled,
               onPress: onPress,
               children: React.createElement(ReactNative.Text, {
-                    style: textStyle,
+                    style: match[0],
                     children: children
                   })
             });

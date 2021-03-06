@@ -94,6 +94,9 @@ external isSameMinute: (Js.Date.t, Js.Date.t) => bool = "isSameMinute"
 @module("date-fns")
 external isSameMonth: (Js.Date.t, Js.Date.t) => bool = "isSameMonth"
 
+@module("date-fns")
+external isSameYear: (Js.Date.t, Js.Date.t) => bool = "isSameYear"
+
 @module("date-fns-tz")
 external _zonedTimeToUtc: (Js.Date.t, localeConfig) => Js.Date.t = "zonedTimeToUtc"
 
@@ -108,3 +111,5 @@ let startOfYear = d => d->_startOfYear->zonedTimeToUtc
 let endOfMonth = d => d->_endOfMonth->zonedTimeToUtc
 let startOfWeek = date => _startOfWeek(date, {locale: seLocale})->zonedTimeToUtc
 let endOfWeek = date => _endOfWeek(date, {locale: seLocale})->zonedTimeToUtc
+
+let now = () => Js.Date.fromFloat(Js.Date.now())

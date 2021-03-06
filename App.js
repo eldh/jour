@@ -1,7 +1,6 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, ScrollView, View} from 'react-native';
+import {SafeAreaView, StyleSheet, ScrollView} from 'react-native';
 import {make as RApp} from './src/App.bs';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 const App = () => {
   return (
@@ -18,11 +17,9 @@ const App = () => {
 const styles = StyleSheet.create({
   scrollView: {
     flex: 1,
-    backgroundColor: 'yellow',
   },
   view: {
     flex: 1,
-    // backgroundColor: 'red',
   },
 });
 

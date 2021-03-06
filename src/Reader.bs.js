@@ -3,22 +3,17 @@
 import * as S from "./revy/S.bs.js";
 import * as Box from "./revy/Box.bs.js";
 import * as $$Text from "./revy/Text.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.mjs";
 import * as React from "react";
-import * as Button from "./revy/Button.bs.js";
 import * as Spacer from "./revy/Spacer.bs.js";
 import * as $$String from "bs-platform/lib/es6/string.mjs";
 import * as DateFns from "./DateFns.bs.js";
-import * as TextArea from "./revy/TextArea.bs.js";
+import * as DateFns$1 from "date-fns";
 import * as DiaryHooks from "./DiaryHooks.bs.js";
-import * as Belt_Option from "bs-platform/lib/es6/belt_Option.mjs";
 import * as ReactNative from "react-native";
 
-function Editor(Props) {
-  var match = DiaryHooks.useDiaryDate(undefined);
-  var date = match[0];
-  var match$1 = DiaryHooks.useDiaryText(date);
-  var setValue = match$1[1];
+function Reader(Props) {
+  var date = Props.date;
+  var match = DiaryHooks.useDiaryText(date);
   return React.createElement(ReactNative.View, {
               style: S.make({
                     hd: S.flexGrow(1),
@@ -43,25 +38,18 @@ function Editor(Props) {
                             NAME: "pct",
                             VAL: 100
                           },
+                          overflow: "visible",
                           children: null
-                        }, Belt_Option.mapWithDefault(match[1], null, (function (cb) {
-                                return React.createElement(Box.make, {
-                                            grow: 0,
-                                            children: React.createElement(Button.make, {
-                                                  onPress: (function (param) {
-                                                      Curry._1(setValue, "");
-                                                      return Curry._1(cb, undefined);
-                                                    }),
-                                                  children: "New date"
-                                                })
-                                          });
-                              })), React.createElement(Box.make, {
+                        }, React.createElement(Box.make, {
                               alignSelf: "flexStart",
                               grow: 0,
+                              direction: "row",
                               children: React.createElement($$Text.make, {
                                     weight: "_700",
                                     size: 4,
-                                    children: $$String.capitalize_ascii(DateFns.format(date, "eeee dd LLLL"))
+                                    children: $$String.capitalize_ascii(DateFns.format(date, "eeee dd LLLL" + (
+                                              DateFns$1.isSameYear(date, new Date(Date.now())) ? "" : " yyyy"
+                                            )))
                                   })
                             }), React.createElement(Spacer.make, {}), React.createElement(ReactNative.ScrollView, {
                               contentContainerStyle: S.make({
@@ -72,7 +60,7 @@ function Editor(Props) {
                                     tl: {
                                       hd: S.alignContent("stretch"),
                                       tl: {
-                                        hd: S.justifyContent("center"),
+                                        hd: S.justifyContent("flexStart"),
                                         tl: {
                                           hd: S.alignItems("stretch"),
                                           tl: {
@@ -93,16 +81,16 @@ function Editor(Props) {
                                       tl: /* [] */0
                                     }
                                   }),
-                              children: React.createElement(TextArea.make, {
-                                    onChangeText: setValue,
-                                    value: match$1[0]
+                              children: React.createElement($$Text.make, {
+                                    letterSpacing: 0.5,
+                                    children: match[0]
                                   })
                             }))
                   })
             });
 }
 
-var make = Editor;
+var make = Reader;
 
 export {
   make ,

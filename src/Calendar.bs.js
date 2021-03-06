@@ -4,12 +4,9 @@ import * as S from "./revy/S.bs.js";
 import * as Box from "./revy/Box.bs.js";
 import * as $$Text from "./revy/Text.bs.js";
 import * as Curry from "bs-platform/lib/es6/curry.mjs";
-import * as Hooks from "./Hooks.bs.js";
 import * as React from "react";
 import * as $$String from "bs-platform/lib/es6/string.mjs";
 import * as DateFns from "./DateFns.bs.js";
-import * as DiaryFs from "./DiaryFs.bs.js";
-import * as $$Promise from "reason-promise/src/js/promise.bs.js";
 import * as DateFns$1 from "date-fns";
 import * as Belt_Array from "bs-platform/lib/es6/belt_Array.mjs";
 import * as Tablecloth from "tablecloth-bucklescript/bucklescript/src/tablecloth.bs.js";
@@ -18,26 +15,6 @@ import * as ReactNative from "react-native";
 
 function now(param) {
   return new Date(Date.now());
-}
-
-function useDiaryList(param) {
-  var match = React.useState(function () {
-        
-      });
-  var setState = match[1];
-  Hooks.useInterval(5000, (function (param) {
-          return $$Promise.get(DiaryFs.getDiaryEntries(undefined), (function (res) {
-                        if (res.TAG === /* Ok */0) {
-                          var entries = res._0;
-                          return Curry._1(setState, (function (param) {
-                                        return entries;
-                                      }));
-                        }
-                        console.log("Error fetching diary list: ", res._0);
-                        
-                      }));
-        }), []);
-  return match[0];
 }
 
 function padMonthStart(date) {
@@ -59,9 +36,12 @@ function padMonthEnd(date) {
 var style = S.make({
       hd: S.width({
             NAME: "px",
-            VAL: 30
+            VAL: 28
           }),
-      tl: /* [] */0
+      tl: {
+        hd: S.alignItems("center"),
+        tl: /* [] */0
+      }
     });
 
 function Calendar$Date(Props) {
@@ -76,20 +56,13 @@ function Calendar$Date(Props) {
               style: style,
               disabled: !isSameMonth || !isActive,
               onPress: onPress,
-              children: React.createElement(Box.make, {
-                    align: "center",
-                    alignContent: "center",
-                    grow: 1,
-                    justify: "center",
-                    direction: "column",
-                    children: isSameMonth ? React.createElement($$Text.make, {
-                            weight: "_700",
-                            color: isToday ? "primary" : (
-                                isActive ? "body" : "faint"
-                              ),
-                            children: DateFns.format(date, "d")
-                          }) : null
-                  })
+              children: isSameMonth ? React.createElement($$Text.make, {
+                      weight: "_700",
+                      color: isToday ? "primary" : (
+                          isActive ? "body" : "faint"
+                        ),
+                      children: DateFns.format(date, "d")
+                    }) : null
             });
 }
 
@@ -101,12 +74,12 @@ var $$Date$1 = {
 var style$1 = S.make({
       hd: S.width({
             NAME: "px",
-            VAL: 210
+            VAL: 196
           }),
       tl: {
         hd: S.height({
               NAME: "px",
-              VAL: 150
+              VAL: 168
             }),
         tl: {
           hd: S.flexDirection("row"),
@@ -171,9 +144,10 @@ function Calendar$Year(Props) {
   var activeDates = Props.activeDates;
   var onPressDate = Props.onPressDate;
   return React.createElement(Box.make, {
+              padding: "half",
               width: {
                 NAME: "px",
-                VAL: 720
+                VAL: 621
               },
               children: null
             }, React.createElement($$Text.make, {
@@ -184,7 +158,7 @@ function Calendar$Year(Props) {
                   style: S.make({
                         hd: S.width({
                               NAME: "px",
-                              VAL: 630
+                              VAL: 621
                             }),
                         tl: /* [] */0
                       }),
@@ -215,7 +189,8 @@ var Year = {
 };
 
 function Calendar(Props) {
-  var diaryList = useDiaryList(undefined);
+  var onOpenDate = Props.onOpenDate;
+  var diaryList = Props.diaryList;
   var today = new Date(Date.now());
   var firstDate = Tablecloth.$$Option.withDefault(today, Tablecloth.$$Option.map((function (d) {
               return DateFns.startOfYear(Tablecloth.List.foldLeft((function (param, memo) {
@@ -235,10 +210,7 @@ function Calendar(Props) {
                             return param[1];
                           }), d));
         }), diaryList);
-  var onPressDate = function (date) {
-    console.log("clickity", date);
-    
-  };
+  var onPressDate = Curry.__1(onOpenDate);
   return React.createElement(ReactNative.ScrollView, {
               contentContainerStyle: S.make({
                     hd: S.alignItems("center"),
@@ -264,7 +236,6 @@ var make = Calendar;
 
 export {
   now ,
-  useDiaryList ,
   padMonthStart ,
   padMonthEnd ,
   $$Date$1 as $$Date,

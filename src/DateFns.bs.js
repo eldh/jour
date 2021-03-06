@@ -61,6 +61,10 @@ function endOfWeek(date) {
             });
 }
 
+function now(param) {
+  return new Date(Date.now());
+}
+
 export {
   format ,
   utcToZonedTime ,
@@ -70,6 +74,7 @@ export {
   endOfMonth ,
   startOfWeek ,
   endOfWeek ,
+  now ,
   
 }
 /* date-fns Not a pure module */
