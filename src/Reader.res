@@ -35,7 +35,7 @@ let make = (~date) => {
               flexGrow(1.),
             } |> S.make
           }>
-          <Text letterSpacing=0.5> {value} </Text>
+          <Text size=1 letterSpacing=0.5> {value} </Text>
         </ReactNative.ScrollView>
       </Box>
     </Box>

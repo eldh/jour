@@ -82,6 +82,7 @@ function Reader(Props) {
                                     }
                                   }),
                               children: React.createElement($$Text.make, {
+                                    size: 1,
                                     letterSpacing: 0.5,
                                     children: match[0]
                                   })
