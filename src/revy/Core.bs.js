@@ -300,38 +300,20 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
       });
   var fonts = fontsOpt !== undefined ? fontsOpt : ({
         body: {
-          hd: "-apple-system",
-          tl: {
-            hd: "BlinkMacSystemFont",
-            tl: {
-              hd: "sans-serif",
-              tl: /* [] */0
-            }
-          }
+          hd: "System",
+          tl: /* [] */0
         },
         title: {
-          hd: "-apple-system",
-          tl: {
-            hd: "BlinkMacSystemFont",
-            tl: {
-              hd: "sans-serif",
-              tl: /* [] */0
-            }
-          }
+          hd: "System",
+          tl: /* [] */0
         },
         mono: {
-          hd: "Courier",
+          hd: "Menlo",
           tl: /* [] */0
         },
         alt: {
-          hd: "-apple-system",
-          tl: {
-            hd: "BlinkMacSystemFont",
-            tl: {
-              hd: "sans-serif",
-              tl: /* [] */0
-            }
-          }
+          hd: "Georgia",
+          tl: /* [] */0
         }
       });
   var hues = huesOpt !== undefined ? huesOpt : ({
@@ -402,7 +384,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         body: {
           NAME: "lab",
           VAL: [
-            10,
+            1,
             0,
             0,
             1
@@ -411,7 +393,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyDown1: {
           NAME: "lab",
           VAL: [
-            98,
+            2,
             0,
             0,
             1
@@ -420,7 +402,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyDown2: {
           NAME: "lab",
           VAL: [
-            96,
+            1,
             0,
             0,
             1
@@ -429,7 +411,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyDown3: {
           NAME: "lab",
           VAL: [
-            94,
+            0,
             0,
             0,
             1
@@ -438,7 +420,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyUp1: {
           NAME: "lab",
           VAL: [
-            100,
+            15,
             0,
             0,
             1
@@ -447,7 +429,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyUp2: {
           NAME: "lab",
           VAL: [
-            100,
+            20,
             0,
             0,
             1
@@ -456,7 +438,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyUp3: {
           NAME: "lab",
           VAL: [
-            100,
+            25,
             0,
             0,
             1
@@ -465,7 +447,7 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         bodyText: {
           NAME: "lab",
           VAL: [
-            10,
+            80,
             0,
             0,
             1
@@ -474,17 +456,17 @@ function createTheme(fontScaleOpt, baseFontSizeOpt, baseLightnessOpt, baseGridUn
         quiet: Lab.fromRGB({
               NAME: "rgb",
               VAL: [
-                130,
-                130,
-                130
+                117,
+                117,
+                117
               ]
             }),
         faint: Lab.fromRGB({
               NAME: "rgb",
               VAL: [
-                70,
-                70,
-                70
+                60,
+                60,
+                60
               ]
             })
       });

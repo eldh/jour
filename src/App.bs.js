@@ -204,7 +204,7 @@ function App$NavButton(Props) {
                       tl: {
                         hd: S.left({
                               NAME: "number",
-                              VAL: 4
+                              VAL: 0
                             }),
                         tl: {
                           hd: S.zIndex(10),
@@ -228,21 +228,29 @@ var NavButton = {
   make: App$NavButton
 };
 
-var style = S.make({
+var wrapperStyle = S.make({
       hd: S.backgroundColor("body"),
       tl: {
-        hd: S.width({
-              NAME: "pct",
-              VAL: 100
-            }),
+        hd: S.flex(1),
         tl: {
-          hd: S.flex(1),
+          hd: S.alignItems("center"),
+          tl: /* [] */0
+        }
+      }
+    });
+
+var style = S.make({
+      hd: S.width({
+            NAME: "px",
+            VAL: 720
+          }),
+      tl: {
+        hd: S.flex(1),
+        tl: {
+          hd: S.flexGrow(1),
           tl: {
-            hd: S.flexGrow(1),
-            tl: {
-              hd: S.padding("double"),
-              tl: /* [] */0
-            }
+            hd: S.padding("double"),
+            tl: /* [] */0
           }
         }
       }
@@ -256,44 +264,48 @@ function App(Props) {
   var route = match[0];
   var diaryList = DiaryHooks.useDiaryList(undefined);
   return React.createElement(ReactNative.View, {
-              style: style,
-              children: null
-            }, route === 0 ? React.createElement(App$NavButton, {
-                    onPress: (function (param) {
-                        return Curry._1(setRoute, (function (param) {
-                                      return /* Calendar */1;
-                                    }));
-                      }),
-                    children: React.createElement(CalendarIcon.make, {})
-                  }) : React.createElement(App$NavButton, {
-                    onPress: (function (param) {
-                        var route$1 = typeof route === "number" ? /* Editor */0 : /* Calendar */1;
-                        return Curry._1(setRoute, (function (param) {
-                                      return route$1;
-                                    }));
-                      }),
-                    children: React.createElement(Arrow.make, {})
-                  }), typeof route === "number" ? (
-                route !== 0 ? React.createElement(Calendar.make, {
-                        onOpenDate: (function (date) {
-                            var route = DateFns$1.isSameDay(date, DateFns.now(undefined)) ? /* Editor */0 : /* Reader */({
-                                  _0: date
-                                });
-                            return Curry._1(setRoute, (function (param) {
-                                          return route;
-                                        }));
-                          }),
-                        diaryList: diaryList
-                      }) : React.createElement(Editor.make, {})
-              ) : React.createElement(Reader.make, {
-                    date: route._0
-                  }));
+              style: wrapperStyle,
+              children: React.createElement(ReactNative.View, {
+                    style: style,
+                    children: null
+                  }, route === 0 ? React.createElement(App$NavButton, {
+                          onPress: (function (param) {
+                              return Curry._1(setRoute, (function (param) {
+                                            return /* Calendar */1;
+                                          }));
+                            }),
+                          children: React.createElement(CalendarIcon.make, {})
+                        }) : React.createElement(App$NavButton, {
+                          onPress: (function (param) {
+                              var route$1 = typeof route === "number" ? /* Editor */0 : /* Calendar */1;
+                              return Curry._1(setRoute, (function (param) {
+                                            return route$1;
+                                          }));
+                            }),
+                          children: React.createElement(Arrow.make, {})
+                        }), typeof route === "number" ? (
+                      route !== 0 ? React.createElement(Calendar.make, {
+                              onOpenDate: (function (date) {
+                                  var route = DateFns$1.isSameDay(date, DateFns.now(undefined)) ? /* Editor */0 : /* Reader */({
+                                        _0: date
+                                      });
+                                  return Curry._1(setRoute, (function (param) {
+                                                return route;
+                                              }));
+                                }),
+                              diaryList: diaryList
+                            }) : React.createElement(Editor.make, {})
+                    ) : React.createElement(Reader.make, {
+                          date: route._0
+                        }))
+            });
 }
 
 var make = App;
 
 export {
   NavButton ,
+  wrapperStyle ,
   style ,
   make ,
   

@@ -51,7 +51,7 @@ module NavButton = {
         list{
           padding(Some(#single)),
           position(#absolute),
-          left(#number(4)),
+          left(#number(0)),
           zIndex(10),
           top(#unsafeCustomValue(24->Obj.magic)),
         }->make
@@ -61,9 +61,14 @@ module NavButton = {
   }
 }
 
+let wrapperStyle = {
+  open S
+  list{backgroundColor(#body), flex(1.), alignItems(#center)}
+}->S.make
+
 let style = {
   open S
-  list{backgroundColor(#body), width(#pct(100.)), flex(1.), flexGrow(1.), padding(Some(#double))}
+  list{width(#px(720)), flex(1.), flexGrow(1.), padding(Some(#double))}
 }->S.make
 
 type routes = Editor | Calendar | Reader(Js.Date.t)
@@ -74,40 +79,42 @@ let make = () => {
   let navigate = route => {setRoute(_ => route)}
   let diaryList = DiaryHooks.useDiaryList()
 
-  <ReactNative.View style>
-    {switch route {
-    | Editor =>
-      <NavButton
-        onPress={_ => {
-          navigate(Calendar)
-        }}>
-        <CalendarIcon />
-      </NavButton>
-    | Reader(_)
-    | Calendar =>
-      <NavButton
-        onPress={_ => {
-          navigate(
-            switch route {
-            | Calendar
-            | Editor =>
-              Editor
-            | Reader(_) => Calendar
-            },
-          )
-        }}>
-        <Arrow />
-      </NavButton>
-    }}
-    {switch route {
-    | Editor => <Editor />
-    | Calendar =>
-      <Calendar
-        diaryList
-        onOpenDate={date =>
-          navigate(date->DateFns.isSameDay(DateFns.now()) ? Editor : Reader(date))}
-      />
-    | Reader(date) => <Reader date />
-    }}
+  <ReactNative.View style=wrapperStyle>
+    <ReactNative.View style>
+      {switch route {
+      | Editor =>
+        <NavButton
+          onPress={_ => {
+            navigate(Calendar)
+          }}>
+          <CalendarIcon />
+        </NavButton>
+      | Reader(_)
+      | Calendar =>
+        <NavButton
+          onPress={_ => {
+            navigate(
+              switch route {
+              | Calendar
+              | Editor =>
+                Editor
+              | Reader(_) => Calendar
+              },
+            )
+          }}>
+          <Arrow />
+        </NavButton>
+      }}
+      {switch route {
+      | Editor => <Editor />
+      | Calendar =>
+        <Calendar
+          diaryList
+          onOpenDate={date =>
+            navigate(date->DateFns.isSameDay(DateFns.now()) ? Editor : Reader(date))}
+        />
+      | Reader(date) => <Reader date />
+      }}
+    </ReactNative.View>
   </ReactNative.View>
 }

@@ -98,11 +98,12 @@ let make = (~onOpenDate, ~diaryList) => {
       )
       ->DateFns.startOfYear
     )
-    ->Tablecloth.Option.withDefault(~default=today)
+    ->Tablecloth.Option.withDefault(~default=today->DateFns.startOfYear)
 
   let allYears =
     (DateFns.differenceInYears(today, firstDate) + 1)
-      ->Belt_Array.makeBy(i => firstDate->DateFns.addYears(i))
+    ->Belt_Array.makeBy(i => firstDate->DateFns.addYears(i))
+    ->Belt_Array.reverse
   let activeDates =
     diaryList->Tablecloth.Option.map(~f=d =>
       d->Tablecloth.List.map(~f=((_, date)) => date)->Tablecloth.Array.from_list
@@ -110,19 +111,23 @@ let make = (~onOpenDate, ~diaryList) => {
   let onPressDate = date => {
     onOpenDate(date)
   }
-  <ReactNative.ScrollView
+
+  <ReactNative.View
     style={
       open S
-      list{flexGrow(1.)} |> make
-    }
-    contentContainerStyle={
-      open S
-      list{alignItems(#center)} |> S.make
+      list{flexGrow(1.), alignItems(#center)} |> make
     }>
-    {allYears
-    ->Tablecloth.Array.map(~f=year =>
-      <Year key={year->DateFns.format("yyyy")} year onPressDate activeDates today />
-    )
-    ->React.array}
-  </ReactNative.ScrollView>
+    <ReactNative.FlatList
+      initialNumToRender={1}
+      getItemLayout={(data, index) => {
+        length: 1024.,
+        offset: (1024 * index)->float_of_int,
+        index: index,
+      }}
+      renderItem={({item}) =>
+        <Year key={item->DateFns.format("yyyy")} year={item} onPressDate activeDates today />}
+      data={allYears}
+      keyExtractor={(year, _) => year->DateFns.format("yyyy")}
+    />
+  </ReactNative.View>
 }

@@ -5,45 +5,38 @@ import * as Core from "./Core.bs.js";
 import * as React from "react";
 import * as ReactNative from "react-native";
 
-function TextArea(Props) {
-  var onChangeText = Props.onChangeText;
-  var value = Props.value;
-  var style = S.make({
-        hd: S.backgroundColor("body"),
+var style = S.make({
+      hd: S.backgroundColor("body"),
+      tl: {
+        hd: S.fontWeight("normal"),
         tl: {
-          hd: S.fontWeight("normal"),
+          hd: S.color(undefined, undefined, "body"),
           tl: {
-            hd: S.color(undefined, undefined, "body"),
+            hd: S.padding2("noSpace", "noSpace"),
             tl: {
-              hd: S.padding2("noSpace", "noSpace"),
+              hd: S.width({
+                    NAME: "pct",
+                    VAL: 100
+                  }),
               tl: {
-                hd: S.width({
+                hd: S.height({
                       NAME: "pct",
                       VAL: 100
                     }),
                 tl: {
-                  hd: S.height({
-                        NAME: "pct",
-                        VAL: 100
-                      }),
+                  hd: S.flexGrow(1),
                   tl: {
-                    hd: S.flexGrow(1),
+                    hd: S.fontSize(1),
                     tl: {
-                      hd: S.fontSize(1),
+                      hd: S.flexBasis({
+                            NAME: "pct",
+                            VAL: 100
+                          }),
                       tl: {
-                        hd: S.flexBasis({
-                              NAME: "pct",
-                              VAL: 100
-                            }),
+                        hd: S.letterSpacing(0.5),
                         tl: {
-                          hd: S.fontFamily("body"),
-                          tl: {
-                            hd: S.letterSpacing(0.5),
-                            tl: {
-                              hd: S.lineHeight(Core.Styles.getLineHeight(0, 1, undefined)),
-                              tl: /* [] */0
-                            }
-                          }
+                          hd: S.lineHeight(Core.Styles.getLineHeight(0, 1, undefined)),
+                          tl: /* [] */0
                         }
                       }
                     }
@@ -53,7 +46,12 @@ function TextArea(Props) {
             }
           }
         }
-      });
+      }
+    });
+
+function TextArea(Props) {
+  var onChangeText = Props.onChangeText;
+  var value = Props.value;
   return React.createElement(ReactNative.TextInput, {
               autoCorrect: true,
               multiline: true,
@@ -67,7 +65,8 @@ function TextArea(Props) {
 var make = TextArea;
 
 export {
+  style ,
   make ,
   
 }
-/* S Not a pure module */
+/* style Not a pure module */

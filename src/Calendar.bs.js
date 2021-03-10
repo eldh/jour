@@ -192,7 +192,7 @@ function Calendar(Props) {
   var onOpenDate = Props.onOpenDate;
   var diaryList = Props.diaryList;
   var today = new Date(Date.now());
-  var firstDate = Tablecloth.$$Option.withDefault(today, Tablecloth.$$Option.map((function (d) {
+  var firstDate = Tablecloth.$$Option.withDefault(DateFns.startOfYear(today), Tablecloth.$$Option.map((function (d) {
               return DateFns.startOfYear(Tablecloth.List.foldLeft((function (param, memo) {
                                 var date = param[1];
                                 if (DateFns$1.isAfter(memo, date)) {
@@ -202,33 +202,47 @@ function Calendar(Props) {
                                 }
                               }), today, d));
             }), diaryList));
-  var allYears = Belt_Array.makeBy(DateFns$1.differenceInYears(today, firstDate) + 1 | 0, (function (i) {
-          return DateFns$1.addYears(firstDate, i);
-        }));
+  var allYears = Belt_Array.reverse(Belt_Array.makeBy(DateFns$1.differenceInYears(today, firstDate) + 1 | 0, (function (i) {
+              return DateFns$1.addYears(firstDate, i);
+            })));
   var activeDates = Tablecloth.$$Option.map((function (d) {
           return Tablecloth.$$Array.from_list(Tablecloth.List.map((function (param) {
                             return param[1];
                           }), d));
         }), diaryList);
   var onPressDate = Curry.__1(onOpenDate);
-  return React.createElement(ReactNative.ScrollView, {
-              contentContainerStyle: S.make({
-                    hd: S.alignItems("center"),
-                    tl: /* [] */0
-                  }),
+  return React.createElement(ReactNative.View, {
               style: S.make({
                     hd: S.flexGrow(1),
-                    tl: /* [] */0
+                    tl: {
+                      hd: S.alignItems("center"),
+                      tl: /* [] */0
+                    }
                   }),
-              children: Tablecloth.$$Array.map((function (year) {
-                      return React.createElement(Calendar$Year, {
-                                  year: year,
-                                  today: today,
-                                  activeDates: activeDates,
-                                  onPressDate: onPressDate,
-                                  key: DateFns.format(year, "yyyy")
-                                });
-                    }), allYears)
+              children: React.createElement(ReactNative.FlatList, {
+                    data: allYears,
+                    getItemLayout: (function (data, index) {
+                        return {
+                                length: 1024,
+                                offset: (index << 10),
+                                index: index
+                              };
+                      }),
+                    initialNumToRender: 1,
+                    keyExtractor: (function (year, param) {
+                        return DateFns.format(year, "yyyy");
+                      }),
+                    renderItem: (function (param) {
+                        var item = param.item;
+                        return React.createElement(Calendar$Year, {
+                                    year: item,
+                                    today: today,
+                                    activeDates: activeDates,
+                                    onPressDate: onPressDate,
+                                    key: DateFns.format(item, "yyyy")
+                                  });
+                      })
+                  })
             });
 }
 
