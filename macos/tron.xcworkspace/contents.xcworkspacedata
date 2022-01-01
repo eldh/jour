@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:/Users/eldh/Code/tron/macos/tron-macOS/DockBadgeModule.h">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/eldh/Code/tron/macos/tron-macOS/DockBadgeModule.m">
+   </FileRef>
+   <FileRef
+      location = "group:/Users/eldh/Code/tron/macos/jour.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

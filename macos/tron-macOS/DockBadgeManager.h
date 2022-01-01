@@ -1,0 +1,2 @@
+@interface DockBadgeManager : RCTViewManager
+@end

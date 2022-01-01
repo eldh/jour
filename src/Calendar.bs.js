@@ -3,14 +3,14 @@
 import * as S from "./revy/S.bs.js";
 import * as Box from "./revy/Box.bs.js";
 import * as $$Text from "./revy/Text.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.mjs";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as $$String from "bs-platform/lib/es6/string.mjs";
+import * as $$String from "rescript/lib/es6/string.js";
 import * as DateFns from "./DateFns.bs.js";
 import * as DateFns$1 from "date-fns";
-import * as Belt_Array from "bs-platform/lib/es6/belt_Array.mjs";
+import * as Belt_Array from "rescript/lib/es6/belt_Array.js";
 import * as Tablecloth from "tablecloth-bucklescript/bucklescript/src/tablecloth.bs.js";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.mjs";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as ReactNative from "react-native";
 
 function now(param) {

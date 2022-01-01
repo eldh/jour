@@ -91,13 +91,13 @@ let make = (~onOpenDate, ~diaryList) => {
   let today = now()
   let firstDate =
     diaryList
-    ->Tablecloth.Option.map(~f=d =>
+    ->Tablecloth.Option.map(~f=d => {
       d
-      ->Tablecloth.List.foldLeft(~initial=today, ~f=((_, date), memo) =>
+      ->Tablecloth.List.foldLeft(~initial=today, ~f=((_, date), memo) => {
         memo->DateFns.isAfter(date) ? date : memo
-      )
+      })
       ->DateFns.startOfYear
-    )
+    })
     ->Tablecloth.Option.withDefault(~default=today->DateFns.startOfYear)
 
   let allYears =

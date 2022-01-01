@@ -153,8 +153,8 @@ function Button(Props) {
               disabled: disabled,
               onPress: onPress,
               children: React.createElement(ReactNative.Text, {
-                    style: match[0],
-                    children: children
+                    children: children,
+                    style: match[0]
                   })
             });
 }
@@ -177,8 +177,8 @@ function Button$Round(Props) {
               disabled: disabled,
               onPress: onPress,
               children: React.createElement(ReactNative.Text, {
-                    style: match[0],
-                    children: children
+                    children: children,
+                    style: match[0]
                   })
             });
 }

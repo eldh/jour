@@ -2,11 +2,11 @@
 
 import * as Css from "./Css.bs.js";
 import * as Lab from "./Lab.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.mjs";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as $$String from "bs-platform/lib/es6/string.mjs";
-import * as Caml_int32 from "bs-platform/lib/es6/caml_int32.mjs";
-import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.mjs";
+import * as $$String from "rescript/lib/es6/string.js";
+import * as Caml_int32 from "rescript/lib/es6/caml_int32.js";
+import * as Caml_exceptions from "rescript/lib/es6/caml_exceptions.js";
 import * as UnsafeCreateReactElement from "./UnsafeCreateReactElement.bs.js";
 
 var InvalidValue = /* @__PURE__ */Caml_exceptions.create("Core.InvalidValue");
@@ -46,13 +46,13 @@ function Core$BackgroundColorContext$Provider(Props) {
                 children: children
               });
   };
-  if (typeof value === "string") {
-    if (value === "transparent") {
+  if (typeof value === "object") {
+    if (value.NAME === "alpha" && value.VAL[0] <= 0.49) {
       return children;
     } else {
       return updateVal(value);
     }
-  } else if (value.NAME === "alpha" && value.VAL[0] <= 0.49) {
+  } else if (value === "transparent") {
     return children;
   } else {
     return updateVal(value);
@@ -90,7 +90,18 @@ function isLight(body) {
 function backgroundColor(theme, alpha, highlight, v) {
   var highlightFn = highlight !== undefined ? Lab.highlight(theme.colors.body, highlight) : identity;
   var tmp;
-  if (typeof v === "string") {
+  if (typeof v === "object") {
+    var variant = v.NAME;
+    if (variant === "unsafeCustomColor") {
+      tmp = v.VAL;
+    } else if (variant === "alpha") {
+      var match = v.VAL;
+      tmp = backgroundColor(theme, match[0], undefined, match[1]);
+    } else {
+      var match$1 = v.VAL;
+      tmp = backgroundColor(theme, undefined, match$1[0], match$1[1]);
+    }
+  } else {
     tmp = v === "secondary" ? theme.colors.secondary : (
         v === "neutral" ? theme.colors.neutral : (
             v === "error" ? theme.colors.error : (
@@ -128,17 +139,6 @@ function backgroundColor(theme, alpha, highlight, v) {
               )
           )
       );
-  } else {
-    var variant = v.NAME;
-    if (variant === "unsafeCustomColor") {
-      tmp = v.VAL;
-    } else if (variant === "alpha") {
-      var match = v.VAL;
-      tmp = backgroundColor(theme, match[0], undefined, match[1]);
-    } else {
-      var match$1 = v.VAL;
-      tmp = backgroundColor(theme, undefined, match$1[0], match$1[1]);
-    }
   }
   return (
             alpha !== undefined ? (function (param) {
@@ -153,7 +153,9 @@ function textColor(theme, alpha, highlight, v) {
             alpha !== undefined ? (function (param) {
                   return alphaFn(alpha, param);
                 }) : identity
-          )(Curry._1(highlightFn, typeof v === "string" ? (
+          )(Curry._1(highlightFn, typeof v === "object" ? (
+                    v.NAME === "unsafeCustomColor" ? v.VAL : theme.colors.bodyText
+                  ) : (
                     v === "success" || v === "brand2" || v === "brand1" || v === "warning" || v === "error" || v === "secondary" || v === "body" ? theme.colors.bodyText : (
                         v === "quiet" ? theme.colors.quiet : (
                             v === "faint" ? theme.colors.faint : (
@@ -161,8 +163,6 @@ function textColor(theme, alpha, highlight, v) {
                               )
                           )
                       )
-                  ) : (
-                    v.NAME === "unsafeCustomColor" ? v.VAL : theme.colors.bodyText
                   )));
 }
 
@@ -212,7 +212,7 @@ function space(negativeOpt, theme, adjustPxOpt, v) {
     return Math.imul(theme.baseGridUnit, v) - adjustPx | 0;
   };
   var multiplier = negative ? -1 : 1;
-  if (typeof v === "string") {
+  if (typeof v !== "object") {
     if (v === "half") {
       return length((multiplier << 0));
     } else if (v === "triple") {
@@ -248,15 +248,15 @@ function space(negativeOpt, theme, adjustPxOpt, v) {
 }
 
 function getPx(v) {
-  if (typeof v === "string") {
+  if (typeof v === "object") {
+    if (v.NAME === "px") {
+      return v.VAL;
+    }
     throw {
           RE_EXN_ID: InvalidValue,
           _1: "Not a pixel value",
           Error: new Error()
         };
-  }
-  if (v.NAME === "px") {
-    return v.VAL;
   }
   throw {
         RE_EXN_ID: InvalidValue,
@@ -601,13 +601,13 @@ function useMatchesMedia(query) {
       });
   var setValue = match[1];
   React.useLayoutEffect((function () {
-          var handler = mql.addListener(function (param) {
-                return Curry._1(setValue, (function (param) {
-                              return mql.matches;
-                            }));
-              });
+          var handler = Curry._1(mql.addListener, (function (param) {
+                  return Curry._1(setValue, (function (param) {
+                                return mql.matches;
+                              }));
+                }));
           return (function (param) {
-                    return mql.removeListener(handler);
+                    return Curry._1(mql.removeListener, handler);
                   });
         }), []);
   return match[0];

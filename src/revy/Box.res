@@ -7,6 +7,7 @@ let getBoxStyle = (
   ~grow as grow_,
   ~basis as basis_,
   ~wrap as wrap_,
+  ~zIndex as zIndex_=?,
   ~shrink as shrink_,
   ~justify as justify_,
   ~direction as direction_,
@@ -54,6 +55,7 @@ let getBoxStyle = (
     flexDirection(direction_),
     flexGrow(grow_),
     flexWrap(wrap_),
+    zIndex(zIndex_->Belt.Option.getWithDefault(0)),
     justifyContent(justify_),
   } |> make
 }
@@ -67,6 +69,7 @@ let make = (
   ~alignContent=#flexStart,
   ~backgroundColor=#transparent,
   ~grow=1.,
+  ~zIndex=?,
   ~wrap=#wrap,
   ~shrink=0.,
   ~basis=#auto,
@@ -97,6 +100,7 @@ let make = (
     ~alignContent,
     ~backgroundColor,
     ~grow,
+    ~zIndex?,
     ~basis,
     ~wrap,
     ~shrink,

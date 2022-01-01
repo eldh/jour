@@ -6,7 +6,7 @@ import * as React from "react";
 import * as ReactNative from "react-native";
 
 var style = S.make({
-      hd: S.backgroundColor("body"),
+      hd: S.backgroundColor("transparent"),
       tl: {
         hd: S.fontWeight("normal"),
         tl: {

@@ -2,7 +2,7 @@ type el = {focus: unit => unit}
 
 open S
 let style = list{
-  backgroundColor(#body),
+  backgroundColor(#transparent),
   fontWeight(#normal),
   color(#body),
   padding2(#noSpace, #noSpace),

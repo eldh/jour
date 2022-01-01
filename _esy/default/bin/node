@@ -1,4 +1,0 @@
-#!/bin/sh
-export ESY__NODE_BIN_PATH="/Users/eldh/Code/jour/_esy/default/bin"
-exec "/usr/local/bin/node" -r "/Users/eldh/Code/jour/_esy/default/pnp.js" "$@"
-              

@@ -8,7 +8,7 @@ let make = (~date) => {
       list{flexGrow(1.)} |> S.make
     }>
     <Box align=#center padding=#half alignContent=#center grow=1. height=#pct(100.)>
-      <Box maxWidth=#pct(100.) width=#px(621) grow=1. overflow=#visible>
+      <Box maxWidth=#pct(100.) width=#px(613) grow=1. overflow=#visible>
         <Box direction=#row grow=0. alignSelf=#flexStart>
           <Text weight=#_700 size=4>
             {DateFns.format(

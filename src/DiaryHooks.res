@@ -46,15 +46,13 @@ let useDiaryText = date => {
   let hasReadFileRef = React.useRef(false)
 
   React.useEffect1(() => {
-    DiaryFs.readDiaryFromFs(~date, ())->Promise.get(result =>
+    DiaryFs.readDiaryFromFs(~date, ())->Promise.get(result => {
+      hasReadFileRef.current = true
       switch result {
-      | Ok(content) => {
-          hasReadFileRef.current = true
-          setValue(_ => content)
-        }
+      | Ok(content) => setValue(_ => content)
       | Error(e) => Js.log2("read file error: ", e)
       }
-    )
+    })
     None
   }, [])
   React.useEffect1(() => {

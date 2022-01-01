@@ -3,7 +3,7 @@
 import * as S from "./S.bs.js";
 import * as Core from "./Core.bs.js";
 import * as ReactNative from "react-native";
-import * as Caml_exceptions from "bs-platform/lib/es6/caml_exceptions.mjs";
+import * as Caml_exceptions from "rescript/lib/es6/caml_exceptions.js";
 import * as UnsafeCreateReactElement from "./UnsafeCreateReactElement.bs.js";
 
 var InvalidValue = /* @__PURE__ */Caml_exceptions.create("Text.InvalidValue");

@@ -104,12 +104,14 @@ external _zonedTimeToUtc: (Js.Date.t, localeConfig) => Js.Date.t = "zonedTimeToU
 external _utcToZonedTime: (Js.Date.t, localeConfig) => Js.Date.t = "utcToZonedTime"
 
 let utcToZonedTime = d => _utcToZonedTime(d, {locale: seLocale})
-let zonedTimeToUtc = d => _zonedTimeToUtc(d, {locale: seLocale})
+// let zonedTimeToUtc = d => _zonedTimeToUtc(d, {locale: seLocale})
 
-let startOfMonth = d => d->_startOfMonth->zonedTimeToUtc
-let startOfYear = d => d->_startOfYear->zonedTimeToUtc
-let endOfMonth = d => d->_endOfMonth->zonedTimeToUtc
-let startOfWeek = date => _startOfWeek(date, {locale: seLocale})->zonedTimeToUtc
-let endOfWeek = date => _endOfWeek(date, {locale: seLocale})->zonedTimeToUtc
+let startOfMonth = d => d->_startOfMonth
+let startOfYear = d => {
+  d->_startOfYear
+}
+let endOfMonth = d => d->_endOfMonth
+let startOfWeek = date => _startOfWeek(date, {locale: seLocale})
+let endOfWeek = date => _endOfWeek(date, {locale: seLocale})
 
 let now = () => Js.Date.fromFloat(Js.Date.now())

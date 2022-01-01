@@ -52,8 +52,9 @@ module NavButton = {
           padding(Some(#single)),
           position(#absolute),
           left(#number(0)),
-          zIndex(10),
+          zIndex(1),
           top(#unsafeCustomValue(24->Obj.magic)),
+          left(#unsafeCustomValue(-36->Obj.magic)),
         }->make
       }>
       {children}
@@ -63,12 +64,12 @@ module NavButton = {
 
 let wrapperStyle = {
   open S
-  list{backgroundColor(#body), flex(1.), alignItems(#center)}
+  list{backgroundColor(#unsafeCustomColor(#lab(0., 0., 0., 0.5))), flex(1.), alignItems(#center)}
 }->S.make
 
 let style = {
   open S
-  list{width(#px(720)), flex(1.), flexGrow(1.), padding(Some(#double))}
+  list{flexGrow(1.), height(#pct(100.)), paddingTop(Some(#double))}
 }->S.make
 
 type routes = Editor | Calendar | Reader(Js.Date.t)
@@ -80,6 +81,11 @@ let make = () => {
   let diaryList = DiaryHooks.useDiaryList()
 
   <ReactNative.View style=wrapperStyle>
+    {switch route {
+    | Editor => <NewDayButton />
+    | Reader(_)
+    | Calendar => React.null
+    }}
     <ReactNative.View style>
       {switch route {
       | Editor =>

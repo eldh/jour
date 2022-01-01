@@ -1,22 +1,28 @@
 import React from 'react';
-import {SafeAreaView, StyleSheet, View} from 'react-native';
+import SidebarView from './SidebarView.macos';
+import {StyleSheet, View} from 'react-native';
 import {make as RApp} from './src/App.bs';
 
 const App = () => {
   return (
-    <SafeAreaView style={styles.view}>
+    <View style={styles.container}>
+      <SidebarView style={styles.bg} />
       <RApp />
-    </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
+  container: {
     flex: 1,
-    alignItems: 'center',
+    flexGrow: 1,
   },
-  view: {
-    flex: 1,
+  bg: {
+    position: 'absolute',
+    top: '0%',
+    left: '0%',
+    width: '100%',
+    height: '100%',
   },
 });
 

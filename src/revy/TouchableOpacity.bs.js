@@ -3,9 +3,9 @@
 import * as Box from "./Box.bs.js";
 import * as Core from "./Core.bs.js";
 import * as View from "./View.bs.js";
-import * as Curry from "bs-platform/lib/es6/curry.mjs";
+import * as Curry from "rescript/lib/es6/curry.js";
 import * as React from "react";
-import * as Caml_option from "bs-platform/lib/es6/caml_option.mjs";
+import * as Caml_option from "rescript/lib/es6/caml_option.js";
 import * as ReactNative from "react-native";
 
 function TouchableOpacity(Props) {
@@ -59,7 +59,7 @@ function TouchableOpacity(Props) {
   var maxWidth = $staropt$star$15 !== undefined ? $staropt$star$15 : "auto";
   var overflow = $staropt$star$16 !== undefined ? $staropt$star$16 : "scroll";
   var borderRadius = $staropt$star$17 !== undefined ? $staropt$star$17 : "none";
-  var style = Box.getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
+  var style = Box.getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, undefined, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
   var tmp = {
     children: React.createElement(View.make, {
           style: style,

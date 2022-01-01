@@ -4,8 +4,9 @@ import * as S from "./S.bs.js";
 import * as Core from "./Core.bs.js";
 import * as View from "./View.bs.js";
 import * as React from "react";
+import * as Belt_Option from "rescript/lib/es6/belt_Option.js";
 
-function getBoxStyle(position_, align_, alignSelf_, alignContent_, backgroundColor_, grow_, basis_, wrap_, shrink_, justify_, direction_, padding_, margin_, marginBottom_, marginTop_, marginLeft_, marginRight_, paddingBottom_, paddingTop_, paddingLeft_, paddingRight_, height_, width_, maxWidth_, overflow_, borderRadius_, param) {
+function getBoxStyle(position_, align_, alignSelf_, alignContent_, backgroundColor_, grow_, basis_, wrap_, zIndex_, shrink_, justify_, direction_, padding_, margin_, marginBottom_, marginTop_, marginLeft_, marginRight_, paddingBottom_, paddingTop_, paddingLeft_, paddingRight_, height_, width_, maxWidth_, overflow_, borderRadius_, param) {
   return S.make({
               hd: S.width(width_),
               tl: {
@@ -57,8 +58,11 @@ function getBoxStyle(position_, align_, alignSelf_, alignContent_, backgroundCol
                                                             tl: {
                                                               hd: S.flexWrap(wrap_),
                                                               tl: {
-                                                                hd: S.justifyContent(justify_),
-                                                                tl: /* [] */0
+                                                                hd: S.zIndex(Belt_Option.getWithDefault(zIndex_, 0)),
+                                                                tl: {
+                                                                  hd: S.justifyContent(justify_),
+                                                                  tl: /* [] */0
+                                                                }
                                                               }
                                                             }
                                                           }
@@ -94,6 +98,7 @@ function Box(Props) {
   var alignContentOpt = Props.alignContent;
   var backgroundColorOpt = Props.backgroundColor;
   var growOpt = Props.grow;
+  var zIndex = Props.zIndex;
   var wrapOpt = Props.wrap;
   var shrinkOpt = Props.shrink;
   var basisOpt = Props.basis;
@@ -131,7 +136,7 @@ function Box(Props) {
   var maxWidth = maxWidthOpt !== undefined ? maxWidthOpt : "auto";
   var overflow = overflowOpt !== undefined ? overflowOpt : "scroll";
   var borderRadius = borderRadiusOpt !== undefined ? borderRadiusOpt : "none";
-  var style = getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
+  var style = getBoxStyle(position, align, alignSelf, alignContent, backgroundColor, grow, basis, wrap, zIndex, shrink, justify, direction, padding, margin, marginBottom, marginTop, marginLeft, marginRight, paddingBottom, paddingTop, paddingLeft, paddingRight, height, width, maxWidth, overflow, borderRadius, undefined);
   return React.createElement(Core.BackgroundColorContext.Provider.make, {
               value: backgroundColor,
               children: React.createElement(View.make, {

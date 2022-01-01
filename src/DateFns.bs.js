@@ -16,47 +16,26 @@ function utcToZonedTime(d) {
             });
 }
 
-function zonedTimeToUtc(d) {
-  return DateFnsTz.zonedTimeToUtc(d, {
-              locale: Locale.sv
-            });
-}
-
 function startOfMonth(d) {
-  var d$1 = DateFns.startOfMonth(d);
-  return DateFnsTz.zonedTimeToUtc(d$1, {
-              locale: Locale.sv
-            });
+  return DateFns.startOfMonth(d);
 }
 
 function startOfYear(d) {
-  var d$1 = DateFns.startOfYear(d);
-  return DateFnsTz.zonedTimeToUtc(d$1, {
-              locale: Locale.sv
-            });
+  return DateFns.startOfYear(d);
 }
 
 function endOfMonth(d) {
-  var d$1 = DateFns.endOfMonth(d);
-  return DateFnsTz.zonedTimeToUtc(d$1, {
-              locale: Locale.sv
-            });
+  return DateFns.endOfMonth(d);
 }
 
 function startOfWeek(date) {
-  var d = DateFns.startOfWeek(date, {
-        locale: Locale.sv
-      });
-  return DateFnsTz.zonedTimeToUtc(d, {
+  return DateFns.startOfWeek(date, {
               locale: Locale.sv
             });
 }
 
 function endOfWeek(date) {
-  var d = DateFns.endOfWeek(date, {
-        locale: Locale.sv
-      });
-  return DateFnsTz.zonedTimeToUtc(d, {
+  return DateFns.endOfWeek(date, {
               locale: Locale.sv
             });
 }
@@ -68,7 +47,6 @@ function now(param) {
 export {
   format ,
   utcToZonedTime ,
-  zonedTimeToUtc ,
   startOfMonth ,
   startOfYear ,
   endOfMonth ,

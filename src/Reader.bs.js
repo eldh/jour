@@ -5,7 +5,7 @@ import * as Box from "./revy/Box.bs.js";
 import * as $$Text from "./revy/Text.bs.js";
 import * as React from "react";
 import * as Spacer from "./revy/Spacer.bs.js";
-import * as $$String from "bs-platform/lib/es6/string.mjs";
+import * as $$String from "rescript/lib/es6/string.js";
 import * as DateFns from "./DateFns.bs.js";
 import * as DateFns$1 from "date-fns";
 import * as DiaryHooks from "./DiaryHooks.bs.js";
@@ -32,7 +32,7 @@ function Reader(Props) {
                           grow: 1,
                           width: {
                             NAME: "px",
-                            VAL: 621
+                            VAL: 613
                           },
                           maxWidth: {
                             NAME: "pct",

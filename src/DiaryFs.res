@@ -1,13 +1,12 @@
 let diaryFolder = Fs.documentDirectoryPath ++ "/.diary"
-
 let ensureFolderExists = folder =>
   Fs.exists(folder)->Promise.flatMap(exists => exists ? Promise.resolved(Ok()) : Fs.mkdir(folder))
 
-let writeToFile = (~file, ~contents, ~folder=diaryFolder, ()) =>
+let writeToFile = (~file, ~contents, ~folder=diaryFolder, ()) => {
   ensureFolderExists(folder)->Promise.flatMapOk(() =>
     Fs.writeFile(~filepath=folder ++ ("/" ++ file), ~contents, ())
   )
-
+}
 let readFile = (~file, ~folder=diaryFolder, ()) =>
   ensureFolderExists(folder)->Promise.flatMapOk(() =>
     Fs.readFile(~filepath=folder ++ ("/" ++ file), ())
@@ -26,7 +25,7 @@ let validFilenameToDate = str => {
   let month = subStr(5, 2)
   let day = subStr(8, 2)
 
-  Js.Date.fromString([year, month, day]->Js.Array.joinWith("-", _))
+  Js.Date.fromString(Js.Array.joinWith("-", [year, month, day]))
 }
 
 let createEntryFromReadDirInfo = (entry: Fs.readDirItem) =>

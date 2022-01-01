@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 55;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0496A360A6F874C295C73D4B /* libPods-Shared-jour-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C8DBC48FD7C3AEF576C57B21 /* libPods-Shared-jour-macOS.a */; };
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB11A68108700A75B9A /* LaunchScreen.xib */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -17,20 +16,26 @@
 		514201522437B4B40078DB4F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 514201512437B4B40078DB4F /* Assets.xcassets */; };
 		514201552437B4B40078DB4F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 514201532437B4B40078DB4F /* Main.storyboard */; };
 		514201582437B4B40078DB4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 514201572437B4B40078DB4F /* main.m */; };
-		B5C72D9C27A1E1D711C050EF /* libPods-Shared-jour-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FB6EED1BDEABADF047CC5223 /* libPods-Shared-jour-iOS.a */; };
+		A6146D702E2E6FE056FCA0F7 /* libPods-tron-macOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A2357DF7959F252F29DF2CF7 /* libPods-tron-macOS.a */; };
+		ADFE1FB77F8966EFFF485D04 /* libPods-tron-iOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EE3235772B64B289E776366 /* libPods-tron-iOS.a */; };
+		EA87AEF7276E9F67004DC657 /* SidebarView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87AEF3276E9F67004DC657 /* SidebarView.m */; };
+		EA87AEF8276E9F67004DC657 /* SidebarViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EA87AEF5276E9F67004DC657 /* SidebarViewManager.m */; };
+		EA9548BC27713260007A0202 /* DockBadgeModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9548BB27713260007A0202 /* DockBadgeModule.m */; };
+		EA9548BF27713693007A0202 /* NotificationModule.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9548BE27713693007A0202 /* NotificationModule.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
-		02422F9FB6FF5F34B4E63E6F /* Pods-Shared-jour-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-jour-macOS.debug.xcconfig"; path = "Target Support Files/Pods-Shared-jour-macOS/Pods-Shared-jour-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		02422F9FB6FF5F34B4E63E6F /* Pods-Shared-tron-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-tron-macOS.debug.xcconfig"; path = "Target Support Files/Pods-Shared-tron-macOS/Pods-Shared-tron-macOS.debug.xcconfig"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* jour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = jour/Info.plist; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = tron/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		38423A3E24576CBC00BC2EAC /* main.jsbundle */ = {isa = PBXFileReference; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		4D8200F08BB369ACFB6DD159 /* Pods-tron-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tron-macOS.release.xcconfig"; path = "Target Support Files/Pods-tron-macOS/Pods-tron-macOS.release.xcconfig"; sourceTree = "<group>"; };
 		514201492437B4B30078DB4F /* jour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = jour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5142014B2437B4B30078DB4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		5142014C2437B4B30078DB4F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -40,14 +45,25 @@
 		514201542437B4B40078DB4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		514201562437B4B40078DB4F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		514201572437B4B40078DB4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		514201592437B4B40078DB4F /* jour.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = jour.entitlements; sourceTree = "<group>"; };
-		9D32DFD059D5DB6DDEF38881 /* Pods-Shared-jour-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-jour-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Shared-jour-iOS/Pods-Shared-jour-iOS.debug.xcconfig"; sourceTree = "<group>"; };
-		A82DFB63B157C65E5D698CA2 /* Pods-Shared-jour-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-jour-iOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-jour-iOS/Pods-Shared-jour-iOS.release.xcconfig"; sourceTree = "<group>"; };
-		C8DBC48FD7C3AEF576C57B21 /* libPods-Shared-jour-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shared-jour-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		CE0E74F571E1F48FF00A8324 /* Pods-Shared-jour-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-jour-macOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-jour-macOS/Pods-Shared-jour-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		514201592437B4B40078DB4F /* tron.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = tron.entitlements; sourceTree = "<group>"; };
+		9AE9D352AB4BB047F30A1F7C /* Pods-tron-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tron-iOS.debug.xcconfig"; path = "Target Support Files/Pods-tron-iOS/Pods-tron-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9D32DFD059D5DB6DDEF38881 /* Pods-Shared-tron-iOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-tron-iOS.debug.xcconfig"; path = "Target Support Files/Pods-Shared-tron-iOS/Pods-Shared-tron-iOS.debug.xcconfig"; sourceTree = "<group>"; };
+		9EE3235772B64B289E776366 /* libPods-tron-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tron-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2357DF7959F252F29DF2CF7 /* libPods-tron-macOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-tron-macOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A82DFB63B157C65E5D698CA2 /* Pods-Shared-tron-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-tron-iOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-tron-iOS/Pods-Shared-tron-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		CE0E74F571E1F48FF00A8324 /* Pods-Shared-tron-macOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shared-tron-macOS.release.xcconfig"; path = "Target Support Files/Pods-Shared-tron-macOS/Pods-Shared-tron-macOS.release.xcconfig"; sourceTree = "<group>"; };
+		CFF9830580F68C52B57473E9 /* Pods-tron-macOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tron-macOS.debug.xcconfig"; path = "Target Support Files/Pods-tron-macOS/Pods-tron-macOS.debug.xcconfig"; sourceTree = "<group>"; };
+		D3FADB9A18CA5BD0F9271F59 /* Pods-tron-iOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-tron-iOS.release.xcconfig"; path = "Target Support Files/Pods-tron-iOS/Pods-tron-iOS.release.xcconfig"; sourceTree = "<group>"; };
+		EA87AEF3276E9F67004DC657 /* SidebarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarView.m; sourceTree = "<group>"; };
+		EA87AEF4276E9F67004DC657 /* SidebarViewManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarViewManager.h; sourceTree = "<group>"; };
+		EA87AEF5276E9F67004DC657 /* SidebarViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SidebarViewManager.m; sourceTree = "<group>"; };
+		EA87AEF6276E9F67004DC657 /* SidebarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SidebarView.h; sourceTree = "<group>"; };
+		EA9548BB27713260007A0202 /* DockBadgeModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = DockBadgeModule.m; path = "/Users/eldh/Code/tron/macos/tron-macOS/DockBadgeModule.m"; sourceTree = "<absolute>"; };
+		EA9548BD27713263007A0202 /* DockBadgeModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DockBadgeModule.h; path = "/Users/eldh/Code/tron/macos/tron-macOS/DockBadgeModule.h"; sourceTree = "<absolute>"; };
+		EA9548BE27713693007A0202 /* NotificationModule.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationModule.m; sourceTree = "<group>"; };
+		EA9548C0277136B3007A0202 /* NotificationModule.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationModule.h; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		FB6EED1BDEABADF047CC5223 /* libPods-Shared-jour-iOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Shared-jour-iOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B5C72D9C27A1E1D711C050EF /* libPods-Shared-jour-iOS.a in Frameworks */,
+				ADFE1FB77F8966EFFF485D04 /* libPods-tron-iOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,14 +79,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0496A360A6F874C295C73D4B /* libPods-Shared-jour-macOS.a in Frameworks */,
+				A6146D702E2E6FE056FCA0F7 /* libPods-tron-macOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		13B07FAE1A68108700A75B9A /* jour-iOS */ = {
+		13B07FAE1A68108700A75B9A /* tron-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
@@ -81,16 +97,20 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			path = "jour-iOS";
+			path = "tron-iOS";
 			sourceTree = "<group>";
 		};
 		1986A43FA6A91CFACDF0A798 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				9D32DFD059D5DB6DDEF38881 /* Pods-Shared-jour-iOS.debug.xcconfig */,
-				A82DFB63B157C65E5D698CA2 /* Pods-Shared-jour-iOS.release.xcconfig */,
-				02422F9FB6FF5F34B4E63E6F /* Pods-Shared-jour-macOS.debug.xcconfig */,
-				CE0E74F571E1F48FF00A8324 /* Pods-Shared-jour-macOS.release.xcconfig */,
+				9D32DFD059D5DB6DDEF38881 /* Pods-Shared-tron-iOS.debug.xcconfig */,
+				A82DFB63B157C65E5D698CA2 /* Pods-Shared-tron-iOS.release.xcconfig */,
+				02422F9FB6FF5F34B4E63E6F /* Pods-Shared-tron-macOS.debug.xcconfig */,
+				CE0E74F571E1F48FF00A8324 /* Pods-Shared-tron-macOS.release.xcconfig */,
+				9AE9D352AB4BB047F30A1F7C /* Pods-tron-iOS.debug.xcconfig */,
+				D3FADB9A18CA5BD0F9271F59 /* Pods-tron-iOS.release.xcconfig */,
+				CFF9830580F68C52B57473E9 /* Pods-tron-macOS.debug.xcconfig */,
+				4D8200F08BB369ACFB6DD159 /* Pods-tron-macOS.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -100,15 +120,23 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				FB6EED1BDEABADF047CC5223 /* libPods-Shared-jour-iOS.a */,
-				C8DBC48FD7C3AEF576C57B21 /* libPods-Shared-jour-macOS.a */,
+				9EE3235772B64B289E776366 /* libPods-tron-iOS.a */,
+				A2357DF7959F252F29DF2CF7 /* libPods-tron-macOS.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		5142014A2437B4B30078DB4F /* jour-macOS */ = {
+		5142014A2437B4B30078DB4F /* tron-macOS */ = {
 			isa = PBXGroup;
 			children = (
+				EA9548BD27713263007A0202 /* DockBadgeModule.h */,
+				EA9548BE27713693007A0202 /* NotificationModule.m */,
+				EA9548C0277136B3007A0202 /* NotificationModule.h */,
+				EA9548BB27713260007A0202 /* DockBadgeModule.m */,
+				EA87AEF6276E9F67004DC657 /* SidebarView.h */,
+				EA87AEF3276E9F67004DC657 /* SidebarView.m */,
+				EA87AEF4276E9F67004DC657 /* SidebarViewManager.h */,
+				EA87AEF5276E9F67004DC657 /* SidebarViewManager.m */,
 				38423A3E24576CBC00BC2EAC /* main.jsbundle */,
 				5142014B2437B4B30078DB4F /* AppDelegate.h */,
 				5142014C2437B4B30078DB4F /* AppDelegate.m */,
@@ -118,9 +146,9 @@
 				514201532437B4B40078DB4F /* Main.storyboard */,
 				514201562437B4B40078DB4F /* Info.plist */,
 				514201572437B4B40078DB4F /* main.m */,
-				514201592437B4B40078DB4F /* jour.entitlements */,
+				514201592437B4B40078DB4F /* tron.entitlements */,
 			);
-			path = "jour-macOS";
+			path = "tron-macOS";
 			sourceTree = "<group>";
 		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
@@ -133,8 +161,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				5142014A2437B4B30078DB4F /* jour-macOS */,
-				13B07FAE1A68108700A75B9A /* jour-iOS */,
+				5142014A2437B4B30078DB4F /* tron-macOS */,
+				13B07FAE1A68108700A75B9A /* tron-iOS */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
@@ -167,13 +195,15 @@
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				CE19CC31B1539EC02EACC075 /* [CP] Embed Pods Frameworks */,
+				C12554376C91F010DDFD9CAD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "jour-iOS";
-			productName = jour;
+			productName = tron;
 			productReference = 13B07F961A680F5B00A75B9A /* jour.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -187,13 +217,14 @@
 				514201462437B4B30078DB4F /* Frameworks */,
 				514201472437B4B30078DB4F /* Resources */,
 				381D8A6E24576A4E00465D17 /* Bundle React Native code and images */,
+				400457E56B3E59D5D35603E5 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = "jour-macOS";
-			productName = jour;
+			productName = tron;
 			productReference = 514201492437B4B30078DB4F /* jour.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -203,21 +234,19 @@
 		83CBB9F71A601CBA00E9B192 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1320;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = 6TQRL8KPXY;
 						LastSwiftMigration = 1120;
 					};
 					514201482437B4B30078DB4F = {
 						CreatedOnToolsVersion = 11.4;
-						DevelopmentTeam = 6TQRL8KPXY;
 						ProvisioningStyle = Automatic;
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Jour" */;
-			compatibilityVersion = "Xcode 3.2";
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "jour" */;
+			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -286,7 +315,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Shared-jour-macOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-tron-macOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -329,6 +358,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export RCT_METRO_PORT=\"${RCT_METRO_PORT:=8081}\"\necho \"export RCT_METRO_PORT=${RCT_METRO_PORT}\" > \"${SRCROOT}/../node_modules/react-native-macos/scripts/.packager.env\"\nif [ -z \"${RCT_NO_LAUNCH_PACKAGER+xxx}\" ] ; then\n  if nc -w 5 -z localhost ${RCT_METRO_PORT} ; then\n    if ! curl -s \"http://localhost:${RCT_METRO_PORT}/status\" | grep -q \"packager-status:running\" ; then\n      echo \"Port ${RCT_METRO_PORT} already in use, packager is either not running or not running correctly\"\n      exit 2\n    fi\n  else\n    open \"$SRCROOT/../node_modules/react-native-macos/scripts/launchPackager.command\" || echo \"Can't start packager automatically\"\n  fi\nfi\n";
 		};
+		400457E56B3E59D5D35603E5 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tron-macOS/Pods-tron-macOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core-macOS/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tron-macOS/Pods-tron-macOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7BC40D98CAD1562CFD247217 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -344,11 +391,47 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Shared-jour-iOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-tron-iOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C12554376C91F010DDFD9CAD /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tron-iOS/Pods-tron-iOS-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/React-Core-iOS/AccessibilityResources.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/AccessibilityResources.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tron-iOS/Pods-tron-iOS-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CE19CC31B1539EC02EACC075 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-tron-iOS/Pods-tron-iOS-frameworks.sh",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/OpenSSL-Universal/OpenSSL.framework/OpenSSL",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OpenSSL.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-tron-iOS/Pods-tron-iOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
@@ -387,7 +470,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				514201502437B4B30078DB4F /* ViewController.m in Sources */,
+				EA9548BF27713693007A0202 /* NotificationModule.m in Sources */,
+				EA87AEF7276E9F67004DC657 /* SidebarView.m in Sources */,
 				514201582437B4B40078DB4F /* main.m in Sources */,
+				EA87AEF8276E9F67004DC657 /* SidebarViewManager.m in Sources */,
+				EA9548BC27713260007A0202 /* DockBadgeModule.m in Sources */,
 				5142014D2437B4B30078DB4F /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -416,15 +503,17 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D32DFD059D5DB6DDEF38881 /* Pods-Shared-jour-iOS.debug.xcconfig */;
+			baseConfigurationReference = 9AE9D352AB4BB047F30A1F7C /* Pods-tron-iOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TQRL8KPXY;
 				ENABLE_BITCODE = NO;
-				INFOPLIST_FILE = "jour-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "tron-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -440,14 +529,16 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A82DFB63B157C65E5D698CA2 /* Pods-Shared-jour-iOS.release.xcconfig */;
+			baseConfigurationReference = D3FADB9A18CA5BD0F9271F59 /* Pods-tron-iOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TQRL8KPXY;
-				INFOPLIST_FILE = "jour-iOS/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "tron-iOS/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -462,15 +553,17 @@
 		};
 		5142015B2437B4B40078DB4F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 02422F9FB6FF5F34B4E63E6F /* Pods-Shared-jour-macOS.debug.xcconfig */;
+			baseConfigurationReference = CFF9830580F68C52B57473E9 /* Pods-tron-macOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
-				DEVELOPMENT_TEAM = 6TQRL8KPXY;
-				INFOPLIST_FILE = "jour-macos/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "tron-macos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -485,14 +578,16 @@
 		};
 		5142015C2437B4B40078DB4F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = CE0E74F571E1F48FF00A8324 /* Pods-Shared-jour-macOS.release.xcconfig */;
+			baseConfigurationReference = 4D8200F08BB369ACFB6DD159 /* Pods-tron-macOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 6TQRL8KPXY;
-				INFOPLIST_FILE = "jour-macos/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				INFOPLIST_FILE = "tron-macos/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				MACOSX_DEPLOYMENT_TARGET = 10.14;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
@@ -528,6 +623,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -552,14 +648,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -589,6 +687,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -606,14 +705,16 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
-				LD_RUNPATH_SEARCH_PATHS = "/usr/lib/swift $(inherited)";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					/usr/lib/swift,
+					"$(inherited)",
+				);
 				LIBRARY_SEARCH_PATHS = (
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift/$(PLATFORM_NAME)\"",
 					"\"$(TOOLCHAIN_DIR)/usr/lib/swift-5.0/$(PLATFORM_NAME)\"",
 					"\"$(inherited)\"",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -641,7 +742,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "Jour" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "jour" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
